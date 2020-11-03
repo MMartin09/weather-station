@@ -1,6 +1,6 @@
 package demo
 
-data class Sensor(
+open class Sensor(
         val name: String,
         val value_type: Int,
         val unit: String,
