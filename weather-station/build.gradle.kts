@@ -1,8 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.20-RC"
-    application
+    kotlin("jvm") version "1.4.10"
+    id("application")
+    id("org.openjfx.javafxplugin") version "0.0.9"
 }
 
 group = "at.martinmoser"
@@ -13,16 +14,16 @@ repositories {
     maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
 }
 
+tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "11"
+}
+
 dependencies {
     implementation("no.tornado:tornadofx:1.7.17")
 }
 
-tasks.test {
-    useJUnit()
-}
-
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
+javafx {
+    modules("javafx.controls", "javafx.fxml")
 }
 
 application {
