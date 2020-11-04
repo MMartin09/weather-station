@@ -2,8 +2,18 @@ package demo
 
 open class Sensor(
         val name: String,
-        val value_type: Int,
+        val value_type: ValueType,
         val unit: String,
-        var value: Float,
-        var last_updated: Int,
-)
+        value: Float,
+        last_updated: Int
+) {
+    var value: Float = value
+        get() = field
+        set(value) {
+            field = value
+            // Update last_updated
+        }
+
+    var last_updated: Int = last_updated
+        get() = field
+}

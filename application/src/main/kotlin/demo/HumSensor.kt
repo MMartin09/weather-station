@@ -2,7 +2,7 @@ package demo
 
 class HumSensor(
         name: String,
-        value_type: Int,
+        value_type: ValueType,
         unit: String,
         value: Float,
         last_updated: Int

@@ -1,5 +1,5 @@
 package demo
 
-enum class ValueType {
+public enum class ValueType {
     INTEGER, FLOAT, BOOLEAN
 }
