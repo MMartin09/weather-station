@@ -8,6 +8,11 @@ import tornadofx.*
 import javafx.scene.control.TableView
 import javafx.scene.control.TextField
 import javafx.scene.layout.BorderPane
+import java.util.*
+import kotlin.concurrent.fixedRateTimer
+import kotlin.concurrent.schedule
+import kotlin.concurrent.scheduleAtFixedRate
+import kotlin.random.Random.Default.nextFloat
 
 fun main(args: Array<String>) {
     println("Hello World!")
@@ -27,12 +32,20 @@ class MainApp: App(MainView::class)
 
 class MainController: Controller() {
     val sensors = FXCollections.observableArrayList<Sensor>()
-    val model = SensorModel()
+    var model = SensorModel()
 
     init {
         sensors.add(Sensor("Temp Sensor", ValueType.INTEGER, "°C"))
         sensors.add(Sensor("Sensor 1", ValueType.FLOAT, "°C"))
         sensors.add(Sensor("Sensor 2", ValueType.FLOAT, "°C"))
+    }
+
+    fun refresh() {
+        model.commit()
+
+        var x = sensors.toList()
+        sensors.clear()
+        sensors.addAll(x)
     }
 }
 
@@ -42,32 +55,56 @@ class MainView: View() {
     val mainController: MainController by inject()
 
     init {
+
+        // create a daemon thread
+        val timer = Timer("schedule", true);
+
+        // schedule at a fixed rate
+        timer.scheduleAtFixedRate(1000, 1000) {
+            val sensor = mainController.model
+
+            val sensor1 = mainController.sensors[0]
+            sensor1.valueProperty.set((nextFloat() * 50 - 25))
+
+            mainController.model.commit()
+            mainController.refresh()
+
+            if (mainController.model.item != null) {
+                sensor.name.set("Test")
+                sensor.value.set(12.0F)
+
+                sensor1.nameProperty.set("TResr")
+
+                mainController.model.commit()
+                mainController.refresh()
+
+                mainController.sensors[0].nameProperty.set("Test")
+
+                if (mainController.model.isDirty) {
+                    mainController.model.commit()
+
+                    mainController.refresh()
+                }
+            }
+        }
+
         with(root) {
             center {
-                tableview(mainController.sensors) {
+                tableview<Sensor>(mainController.sensors) {
                     column("Name", Sensor::name)
                     column("Value Type", Sensor::value_type)
                     column("Unit", Sensor::unit)
                     column("Value", Sensor::value)
                     column("Last updated", Sensor::last_updated)
 
-                    // Update the person inside the view model on selection change
-                    mainController.model.rebindOnChange(this) { selectedSensor ->
-                        item = selectedSensor ?: Sensor()
+                    mainController.model.rebindOnChange(this) {
+                        selectedSensor -> item = selectedSensor ?: Sensor()
+
+                        mainController.model.commit()
                     }
                 }
-            }}
-    }
-
-    private fun save() {
-        // Flush changes from the text fields into the model
-        //controller.model.commit()
-
-        // The edited person is contained in the model
-        //val person = controller.model.item
-
-        // A real application would persist the person here
-        //println("Saving ${person.name} / ${person.title}")
+            }
+        }
     }
 }
 

@@ -25,23 +25,11 @@ open class Sensor(
     val unitProperty = SimpleStringProperty(this, "unit", unit)
     var unit by unitProperty
 
-    val valueProperty = SimpleFloatProperty(this, "value", Float.NaN)
+    val valueProperty = SimpleFloatProperty(this, "value", 0F)
     var value by valueProperty
 
     val lastUpdatedProperty = SimpleObjectProperty(this, "last_updated", EPOCH)
     var last_updated by lastUpdatedProperty
-
-    /*var value: Float = Float.NaN
-        get() = field
-        set(value) {
-            field = value
-
-            // update the last updated mark
-            last_updated = LocalDateTime.now()
-        }
-
-    var last_updated = EPOCH
-        get() = field*/
 }
 
 class SensorModel: ItemViewModel<Sensor>() {
