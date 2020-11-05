@@ -26,10 +26,8 @@ fun main(args: Array<String>) {
 class MainApp: App(MainView::class)
 
 class Person(name: String? = null, title: String? = null) {
-    //val nameProperty = SimpleStringProperty(this, "name", name)
-    //var name by nameProperty
-
-    var name: String? = name
+    val nameProperty = SimpleStringProperty(this, "name", name)
+    var name by nameProperty
 
     val titleProperty = SimpleStringProperty(this, "title", title)
     var title by titleProperty
@@ -44,49 +42,40 @@ class PersonController() : Controller() {
     val model = PersonModel(Person())
 }
 
+class MainController: Controller() {
+    val sensors = FXCollections.observableArrayList<Sensor>()
+    val selectedSensor = SensorModel()
+
+    val model = SensorModel()
+
+    /*init {
+        sensors.add(Sensor("Temp Sensor", 0, "°C"))
+    }*/
+}
+
 class MainView: View() {
     override val root = BorderPane()
     val persons = listOf(Person("John", "Manager"), Person("Jay", "Worker bee")).observable()
-    //val model = PersonModel(Person())
+    val sensors = listOf(Sensor("Sensor 1", ValueType.FLOAT, "°C"), Sensor("Sensor 2", ValueType.FLOAT, "°C")).observable()
 
     val controller: PersonController by inject()
+
+    val mainController: MainController by inject()
+
 
     init {
         with(root) {
             center {
-                tableview(persons) {
-                    column("Name", Person::name)
-                    column("Title", Person::titleProperty)
+                tableview(sensors) {
+                    column("Name", Sensor::name)
+                    //column("Title", Person::titleProperty)
 
                     // Update the person inside the view model on selection change
-                    controller.model.rebindOnChange(this) { selectedPerson ->
-                        item = selectedPerson ?: Person()
+                    mainController.model.rebindOnChange(this) { selectedSensor ->
+                        item = selectedSensor ?: Sensor()
                     }
                 }
-            }
-
-            right {
-                form {
-                    fieldset("Edit person") {
-                        field("Name") {
-                            textfield(controller.model.name)
-                        }
-                        field("Title") {
-                            textfield(controller.model.title)
-                        }
-                        button("Save") {
-                            enableWhen(controller.model.dirty)
-                            action {
-                                save()
-                            }
-                        }
-                        button("Reset").action {
-                            controller.model.rollback()
-                        }
-                    }
-                }
-            }
-        }
+            }}
     }
 
     private fun save() {
@@ -101,11 +90,3 @@ class MainView: View() {
     }
 }
 
-class MainController: Controller() {
-    val sensors = FXCollections.observableArrayList<Sensor>()
-    val selectedSensor = SensorModel()
-
-    init {
-        sensors.add(Sensor("Temp Sensor", 0, "°C"))
-    }
-}
