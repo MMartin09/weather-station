@@ -1,5 +1,6 @@
 package martinmoser.models
 
+import javafx.beans.property.SimpleFloatProperty
 import tornadofx.*
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleObjectProperty
@@ -24,6 +25,12 @@ open class Sensor(
     val unitProperty = SimpleStringProperty(this, "unit", unit)
     var unit by unitProperty
 
+    val valueProperty = SimpleFloatProperty(this, "value", Float.NaN)
+    var value by valueProperty
+
+    val lastUpdatedProperty = SimpleObjectProperty(this, "last_updated", EPOCH)
+    var last_updated by lastUpdatedProperty
+
     /*var value: Float = Float.NaN
         get() = field
         set(value) {
@@ -41,6 +48,6 @@ class SensorModel: ItemViewModel<Sensor>() {
     val name = bind(Sensor::nameProperty)
     val value_type = bind(Sensor::valueTypeProperty)
     val unit = bind(Sensor::unitProperty)
-    //var value = bind { item?.value.toProperty() }
-    //var last_updated = bind { item?.last_updated.toProperty() }
+    val value = bind(Sensor::valueProperty)
+    val last_updated = bind(Sensor::lastUpdatedProperty)
 }
