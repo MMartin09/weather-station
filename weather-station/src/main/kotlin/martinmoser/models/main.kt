@@ -8,6 +8,7 @@ import tornadofx.*
 import javafx.scene.control.TableView
 import javafx.scene.control.TextField
 import javafx.scene.layout.BorderPane
+import tornadofx.Stylesheet.Companion.contextMenu
 import java.util.*
 import kotlin.concurrent.fixedRateTimer
 import kotlin.concurrent.schedule
@@ -102,8 +103,10 @@ class MainView: View() {
 
                     mainController.model.rebindOnChange(this) {
                         selectedSensor -> item = selectedSensor ?: Sensor()
+                    }
 
-                        mainController.model.commit()
+                    contextmenu {
+                        item("Details")
                     }
                 }
             }
