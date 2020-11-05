@@ -31,7 +31,10 @@ open class Sensor(
     val lastUpdatedProperty = SimpleObjectProperty(this, "last_updated", EPOCH)
     var last_updated by lastUpdatedProperty
 
-    
+    fun updateValue(value: Float) {
+        valueProperty.set(value)
+        lastUpdatedProperty.set(LocalDateTime.now())
+    }
 }
 
 class SensorModel: ItemViewModel<Sensor>() {

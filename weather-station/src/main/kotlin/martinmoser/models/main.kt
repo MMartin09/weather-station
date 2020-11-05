@@ -35,7 +35,7 @@ class MainController: Controller() {
     var model = SensorModel()
 
     init {
-        sensors.add(Sensor("Temp Sensor", ValueType.INTEGER, "°C"))
+        sensors.add(Sensor("Temp Sensor", ValueType.FLOAT, "°C"))
         sensors.add(Sensor("Sensor 1", ValueType.FLOAT, "°C"))
         sensors.add(Sensor("Sensor 2", ValueType.FLOAT, "°C"))
     }
@@ -61,31 +61,27 @@ class MainView: View() {
 
         // schedule at a fixed rate
         timer.scheduleAtFixedRate(1000, 1000) {
-            val sensor = mainController.model
-
             val sensor1 = mainController.sensors[0]
-            sensor1.valueProperty.set((nextFloat() * 50 - 25))
+            sensor1.updateValue((nextFloat() * 50 - 25))
 
             mainController.model.commit()
             mainController.refresh()
 
-            if (mainController.model.item != null) {
-                sensor.name.set("Test")
-                sensor.value.set(12.0F)
+            // -----------------------------------
 
-                sensor1.nameProperty.set("TResr")
+            val sensor2 = mainController.sensors[1]
+            sensor2.updateValue((nextFloat() * 50 - 25))
 
-                mainController.model.commit()
-                mainController.refresh()
+            mainController.model.commit()
+            mainController.refresh()
 
-                mainController.sensors[0].nameProperty.set("Test")
+            // -----------------------------------
 
-                if (mainController.model.isDirty) {
-                    mainController.model.commit()
+            val sensor3 = mainController.sensors[2]
+            sensor3.updateValue((nextFloat() * 50 - 25))
 
-                    mainController.refresh()
-                }
-            }
+            mainController.model.commit()
+            mainController.refresh()
         }
 
         with(root) {

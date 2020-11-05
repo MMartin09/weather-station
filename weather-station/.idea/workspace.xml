@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="825a1899-e9b0-47aa-9d0a-576e55edcfc7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/Sensor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/Sensor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/main.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1jpQktKzvEh53wxufU6f6mO1emf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/kotlin" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="martinmoser.models" />
+      <recent name="models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\weather-station\weather-station\src\main\kotlin" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="weather-station.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="martinmoser.models.MainKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainKt" />
+        <item itemvalue="Application.MainKt" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="825a1899-e9b0-47aa-9d0a-576e55edcfc7" name="Default Changelist" comment="" />
+      <created>1604498699488</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604498699488</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="956" y="625" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1604517501160">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="956" y="625" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1604517501160" />
+    <state x="1699" y="491" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1604517510244">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1699" y="491" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1604517510244" />
+    <state x="1061" y="455" key="FileChooserDialogImpl" timestamp="1604507743105">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1061" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1604507743105" />
+    <state width="1235" height="215" key="GridCell.Tab.0.bottom" timestamp="1604588227442">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1235" height="215" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1604588227442" />
+    <state width="1235" height="215" key="GridCell.Tab.0.center" timestamp="1604588227442">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1235" height="215" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1604588227442" />
+    <state width="1235" height="215" key="GridCell.Tab.0.left" timestamp="1604588227442">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1235" height="215" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1604588227442" />
+    <state width="1235" height="215" key="GridCell.Tab.0.right" timestamp="1604588227442">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1235" height="215" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1604588227442" />
+    <state x="971" y="514" key="SettingsEditor" timestamp="1604510232492">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="971" y="514" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1604510232492" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1604582923678">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1604582923678" />
+  </component>
+</project>
