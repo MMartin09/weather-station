@@ -30,6 +30,8 @@ open class Sensor(
 
     val lastUpdatedProperty = SimpleObjectProperty(this, "last_updated", EPOCH)
     var last_updated by lastUpdatedProperty
+
+    
 }
 
 class SensorModel: ItemViewModel<Sensor>() {
