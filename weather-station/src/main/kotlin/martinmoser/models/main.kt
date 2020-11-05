@@ -12,6 +12,7 @@ import java.util.*
 import kotlin.concurrent.fixedRateTimer
 import kotlin.concurrent.schedule
 import kotlin.concurrent.scheduleAtFixedRate
+import kotlin.math.roundToLong
 import kotlin.random.Random.Default.nextFloat
 
 fun main(args: Array<String>) {
@@ -90,8 +91,14 @@ class MainView: View() {
                     column("Name", Sensor::name)
                     column("Value Type", Sensor::value_type)
                     column("Unit", Sensor::unit)
-                    column("Value", Sensor::value)
-                    column("Last updated", Sensor::last_updated)
+
+                    column("Value", Sensor::value).cellFormat {
+                        text = "%.${2}f".format(it)
+                    }
+
+                    column("Last updated", Sensor::last_updated).cellFormat {
+                        text = "${it.hour}:" + "%02d".format(it.minute) + ":%02d".format(it.second)
+                    }
 
                     mainController.model.rebindOnChange(this) {
                         selectedSensor -> item = selectedSensor ?: Sensor()

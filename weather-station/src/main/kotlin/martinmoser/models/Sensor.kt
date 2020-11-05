@@ -31,6 +31,16 @@ open class Sensor(
     val lastUpdatedProperty = SimpleObjectProperty(this, "last_updated", EPOCH)
     var last_updated by lastUpdatedProperty
 
+    /**
+     * Update the value of a sensor.
+     * If the value of a sensor is updated with this function,
+     * the last update attribut will also be refreshed.
+     *
+     * @author MMartin09
+     * @since 0.1.0
+     *
+     * @param value New value of the sensor
+     */
     fun updateValue(value: Float) {
         valueProperty.set(value)
         lastUpdatedProperty.set(LocalDateTime.now())
