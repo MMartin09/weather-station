@@ -1,32 +1,52 @@
 package martinmoser.models
 
-import javafx.beans.property.SimpleStringProperty
+import com.fazecast.jSerialComm.SerialPort
 import javafx.collections.FXCollections
-import martinmoser.models.Sensor
-import martinmoser.models.SensorModel
-import tornadofx.*
-import javafx.scene.control.TableView
-import javafx.scene.control.TextField
 import javafx.scene.layout.BorderPane
+import tornadofx.*
 import java.util.*
-import kotlin.concurrent.fixedRateTimer
-import kotlin.concurrent.schedule
+import javax.usb.UsbDevice
+import javax.usb.UsbHostManager
+import javax.usb.UsbHub
+import javax.usb.UsbServices
 import kotlin.concurrent.scheduleAtFixedRate
-import kotlin.math.roundToLong
 import kotlin.random.Random.Default.nextFloat
+
 
 fun main(args: Array<String>) {
     println("Hello World!")
-/*
-    val tempSensor = Sensor("Temp Sensor", martinmoser.models.ValueType.FLOAT, "°C")
 
-    println("Tmperature sensor: Value = ${tempSensor.value}; last_updated = ${tempSensor.last_updated}")
+    val commPorts = SerialPort.getCommPorts()
 
-    tempSensor.value = 23.3F
+    println("Found ${commPorts.size} comm ports! \n")
 
-    println("Tmperature sensor: Value = ${tempSensor.value}; last_updated = ${tempSensor.last_updated}")
-*/
-    launch<MainApp>(args)
+    var comPort: SerialPort? = null
+
+    commPorts.forEach {
+        val portDescription = it.portDescription
+
+        if (portDescription.contains("Arduino MKR WiFi 1010")) {
+            println("Found Arduino on Port: ${it.systemPortName}")
+            comPort = it
+            return
+        }
+    }
+
+    if (comPort == null) {
+        println("Could not find any Arduino!")
+        return
+    }
+
+    /*val comPort = commPorts[1]
+    println("Descriptive Port Name: ${comPort.descriptivePortName}")
+    println("Port Description: ${comPort.portDescription}")
+    println("System Port Name: ${comPort.systemPortName}")*/
+
+
+    //comPort.openPort()
+    //comPort.closePort()
+
+    //launch<MainApp>(args)
 }
 
 class MainApp: App(MainView::class)
@@ -100,8 +120,7 @@ class MainView: View() {
                         text = "${it.hour}:" + "%02d".format(it.minute) + ":%02d".format(it.second)
                     }
 
-                    mainController.model.rebindOnChange(this) {
-                        selectedSensor -> item = selectedSensor ?: Sensor()
+                    mainController.model.rebindOnChange(this) { selectedSensor -> item = selectedSensor ?: Sensor()
 
                         mainController.model.commit()
                     }
