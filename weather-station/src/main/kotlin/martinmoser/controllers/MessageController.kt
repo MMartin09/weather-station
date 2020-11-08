@@ -15,6 +15,8 @@ class MessageController: Controller() {
     private val message = SimpleStringProperty("")
     private val messageArray = mutableListOf<String>()
 
+    private val maxNumberOfLines = 5
+
     /**
      * Add a new message.
      *
@@ -27,7 +29,7 @@ class MessageController: Controller() {
      * @param msg Message that should be printed
      */
     fun addMessage(msg: String) {
-        if (messageArray.size >= 3) deleteLine()
+        if (messageArray.size >= maxNumberOfLines) deleteLine()
 
         messageArray.prepend(LocalTime.now().toString() + ": " + msg + "\n")
         val tmp = messageArray.toList().toString().replace("[", "").replace("]", "").replace(", ", "")

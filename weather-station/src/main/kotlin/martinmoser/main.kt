@@ -2,6 +2,7 @@ package martinmoser.models
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
+import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MessageController
 import tornadofx.*
 import java.time.LocalTime
@@ -93,7 +94,7 @@ class MainView: View() {
             mainController.refresh()
 
             // -----------------------------------
-            messageController.addMessage("Test ${nextFloat()}")
+            //messageController.addMessage("Test ${nextFloat()}")
         }
     }
 
@@ -108,6 +109,13 @@ class MainView: View() {
                 menu("Edit") {
                     item("Item 1")
                     item("Item 2")
+
+                    item("Connecto to Arduino").action {
+                        println("Clicked!")
+
+                        val serialDeviceManager = SerialDeviceManager()
+                        serialDeviceManager.searchArduino(scan = true)
+                    }
                 }
             }
         }
@@ -134,7 +142,10 @@ class MainView: View() {
         }
 
         bottom {
-            textarea(messageController.getMessages())
+            vbox {
+                textarea(messageController.getMessages())
+                label("Not connected!")
+            }
         }
     }
 }
