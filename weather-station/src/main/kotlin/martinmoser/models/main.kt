@@ -1,9 +1,11 @@
 package martinmoser.models
 
 import com.fazecast.jSerialComm.SerialPort
+import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.scene.layout.BorderPane
 import tornadofx.*
+import java.time.LocalTime
 import java.util.*
 import javax.usb.UsbDevice
 import javax.usb.UsbHostManager
@@ -46,6 +48,8 @@ class MainController: Controller() {
     val sensors = FXCollections.observableArrayList<Sensor>()
     var model = SensorModel()
 
+    val logText = SimpleStringProperty()
+
     init {
         sensors.add(Sensor("Temp Sensor", ValueType.FLOAT, "°C"))
         sensors.add(Sensor("Sensor 1", ValueType.FLOAT, "°C"))
@@ -61,8 +65,21 @@ class MainController: Controller() {
     }
 }
 
+class MessageController: Controller() {
+    val message = SimpleStringProperty("")
+
+    fun addMessage(msg: String) {
+        val curMessage = message.get()
+
+        val newMessage = LocalTime.now().toString() + ": " + msg + "\n" + curMessage
+
+        message.set(newMessage)
+    }
+}
+
 class MainView: View() {
     val mainController: MainController by inject()
+    val messageController: MessageController by inject()
 
     init {
         // create a daemon thread
@@ -91,6 +108,12 @@ class MainView: View() {
 
             mainController.model.commit()
             mainController.refresh()
+
+            // -----------------------------------
+
+            //mainController.logText.set("Test ${nextFloat()}")
+
+            messageController.addMessage("Test ${nextFloat()}")
         }
     }
 
@@ -114,6 +137,10 @@ class MainView: View() {
                     mainController.model.commit()
                 }
             }
+        }
+
+        bottom {
+            textarea(messageController.message)
         }
     }
 }
