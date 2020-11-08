@@ -2,9 +2,11 @@ package martinmoser.models
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
+import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MessageController
 import tornadofx.*
+import java.lang.Thread.sleep
 import java.time.LocalTime
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
@@ -13,27 +15,6 @@ import kotlin.random.Random.Default.nextFloat
 
 fun main(args: Array<String>) {
     println("Hello World!")
-
-    /*val commPorts = SerialPort.getCommPorts()
-
-    println("Found ${commPorts.size} comm ports! \n")
-
-    var comPort: SerialPort? = null
-
-    commPorts.forEach {
-        val portDescription = it.portDescription
-
-        if (portDescription.contains("Arduino MKR WiFi 1010")) {
-            println("Found Arduino on Port: ${it.systemPortName}")
-            comPort = it
-            return
-        }
-    }
-
-    if (comPort == null) {
-        println("Could not find any Arduino!")
-        return
-    }*/
 
     launch<MainApp>(args)
 }
@@ -111,10 +92,13 @@ class MainView: View() {
                     item("Item 2")
 
                     item("Connecto to Arduino").action {
-                        println("Clicked!")
-
                         val serialDeviceManager = SerialDeviceManager()
-                        serialDeviceManager.searchArduino(scan = true)
+                        if (serialDeviceManager.searchArduino(scan = true)) {
+                            // SearchArduino will return false if the targetPort is null.
+                            // So no null safe call is required
+                            val serialDevice = SerialDevice(serialDeviceManager.targetPort!!)
+                            serialDevice.connect()
+                        }
                     }
                 }
             }
