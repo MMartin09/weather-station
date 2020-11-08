@@ -1,10 +1,13 @@
 package martinmoser.models
 
+import com.fazecast.jSerialComm.SerialPort
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MessageController
+import martinmoser.controllers.Status
+import martinmoser.controllers.StatusController
 import tornadofx.*
 import java.lang.Thread.sleep
 import java.time.LocalTime
@@ -45,8 +48,11 @@ class MainController: Controller() {
 class MainView: View() {
     val mainController: MainController by inject()
     val messageController: MessageController by inject()
+    private val statusController: StatusController by inject()
 
     init {
+        statusController.setStatus(Status.DISCONNECTED)
+
         // create a daemon thread
         val timer = Timer("schedule", true);
 
@@ -73,9 +79,6 @@ class MainView: View() {
 
             mainController.model.commit()
             mainController.refresh()
-
-            // -----------------------------------
-            //messageController.addMessage("Test ${nextFloat()}")
         }
     }
 
@@ -128,7 +131,7 @@ class MainView: View() {
         bottom {
             vbox {
                 textarea(messageController.getMessages())
-                label("Not connected!")
+                label(statusController.getStatus())
             }
         }
     }
