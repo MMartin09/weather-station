@@ -92,9 +92,9 @@ class MessageController: Controller() {
     /**
      * Get all messages.
      *
-     * @returns The messages for the message box. 
+     * @returns The messages for the message box.
      */
-    fun getMessages() = message.get()
+    fun getMessages(): SimpleStringProperty { return message }
 
     /**
      * Delete the oldest message.
