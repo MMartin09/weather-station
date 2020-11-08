@@ -93,14 +93,25 @@ class MainView: View() {
             mainController.refresh()
 
             // -----------------------------------
-
-            //mainController.logText.set("Test ${nextFloat()}")
-
             messageController.addMessage("Test ${nextFloat()}")
         }
     }
 
     override val root = borderpane  {
+        top {
+            menubar {
+                menu("File") {
+                    item("Item 1")
+                    item("Item 2")
+                }
+
+                menu("Edit") {
+                    item("Item 1")
+                    item("Item 2")
+                }
+            }
+        }
+
         center {
             tableview<Sensor>(mainController.sensors) {
                 column("Name", Sensor::name)

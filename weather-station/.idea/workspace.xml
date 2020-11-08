@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="825a1899-e9b0-47aa-9d0a-576e55edcfc7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/controllers/MessageController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" afterDir="false" />
     </list>
@@ -105,22 +104,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1604507743105" />
-    <state width="2517" height="345" key="GridCell.Tab.0.bottom" timestamp="1604842072103">
+    <state width="2517" height="345" key="GridCell.Tab.0.bottom" timestamp="1604849792865">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="345" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1604842072103" />
-    <state width="2517" height="345" key="GridCell.Tab.0.center" timestamp="1604842072103">
+    <state width="2517" height="345" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1604849792865" />
+    <state width="2517" height="345" key="GridCell.Tab.0.center" timestamp="1604849792864">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="345" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1604842072103" />
-    <state width="2517" height="345" key="GridCell.Tab.0.left" timestamp="1604842072103">
+    <state width="2517" height="345" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1604849792864" />
+    <state width="2517" height="345" key="GridCell.Tab.0.left" timestamp="1604849792864">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="345" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1604842072103" />
-    <state width="2517" height="345" key="GridCell.Tab.0.right" timestamp="1604842072103">
+    <state width="2517" height="345" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1604849792864" />
+    <state width="2517" height="345" key="GridCell.Tab.0.right" timestamp="1604849792865">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="345" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1604842072103" />
+    <state width="2517" height="345" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1604849792865" />
     <state x="971" y="514" key="SettingsEditor" timestamp="1604510232492">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
