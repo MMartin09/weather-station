@@ -16,7 +16,7 @@ import kotlin.random.Random.Default.nextFloat
 fun main(args: Array<String>) {
     println("Hello World!")
 
-    val commPorts = SerialPort.getCommPorts()
+    /*val commPorts = SerialPort.getCommPorts()
 
     println("Found ${commPorts.size} comm ports! \n")
 
@@ -35,18 +35,9 @@ fun main(args: Array<String>) {
     if (comPort == null) {
         println("Could not find any Arduino!")
         return
-    }
+    }*/
 
-    /*val comPort = commPorts[1]
-    println("Descriptive Port Name: ${comPort.descriptivePortName}")
-    println("Port Description: ${comPort.portDescription}")
-    println("System Port Name: ${comPort.systemPortName}")*/
-
-
-    //comPort.openPort()
-    //comPort.closePort()
-
-    //launch<MainApp>(args)
+    launch<MainApp>(args)
 }
 
 class MainApp: App(MainView::class)
@@ -71,12 +62,9 @@ class MainController: Controller() {
 }
 
 class MainView: View() {
-    override val root = BorderPane()
-
     val mainController: MainController by inject()
 
     init {
-
         // create a daemon thread
         val timer = Timer("schedule", true);
 
@@ -104,26 +92,26 @@ class MainView: View() {
             mainController.model.commit()
             mainController.refresh()
         }
+    }
 
-        with(root) {
-            center {
-                tableview<Sensor>(mainController.sensors) {
-                    column("Name", Sensor::name)
-                    column("Value Type", Sensor::value_type)
-                    column("Unit", Sensor::unit)
+    override val root = borderpane  {
+        center {
+            tableview<Sensor>(mainController.sensors) {
+                column("Name", Sensor::name)
+                column("Value Type", Sensor::value_type)
+                column("Unit", Sensor::unit)
 
-                    column("Value", Sensor::value).cellFormat {
-                        text = "%.${2}f".format(it)
-                    }
+                column("Value", Sensor::value).cellFormat {
+                    text = "%.${2}f".format(it)
+                }
 
-                    column("Last updated", Sensor::last_updated).cellFormat {
-                        text = "${it.hour}:" + "%02d".format(it.minute) + ":%02d".format(it.second)
-                    }
+                column("Last updated", Sensor::last_updated).cellFormat {
+                    text = "${it.hour}:" + "%02d".format(it.minute) + ":%02d".format(it.second)
+                }
 
-                    mainController.model.rebindOnChange(this) { selectedSensor -> item = selectedSensor ?: Sensor()
+                mainController.model.rebindOnChange(this) { selectedSensor -> item = selectedSensor ?: Sensor()
 
-                        mainController.model.commit()
-                    }
+                    mainController.model.commit()
                 }
             }
         }
