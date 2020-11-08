@@ -7,3 +7,15 @@ Moser Martin
 :title-page:
 
 == Introduction
+
+
+== Shortcuts 
+
+.Shortcuts
+|===
+|Shortcut |Action
+
+|`Ctrl + C`
+| Connect to Arduino
+
+|===
