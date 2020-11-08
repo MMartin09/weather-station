@@ -1,16 +1,10 @@
 package martinmoser.models
 
-import com.fazecast.jSerialComm.SerialPort
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
-import javafx.scene.layout.BorderPane
 import tornadofx.*
 import java.time.LocalTime
 import java.util.*
-import javax.usb.UsbDevice
-import javax.usb.UsbHostManager
-import javax.usb.UsbHub
-import javax.usb.UsbServices
 import kotlin.concurrent.scheduleAtFixedRate
 import kotlin.random.Random.Default.nextFloat
 
@@ -65,29 +59,67 @@ class MainController: Controller() {
     }
 }
 
+/**
+ * Controller for the message window.
+ *
+ * @author MMartin09
+ * @since 0.1.0
+ */
 class MessageController: Controller() {
-    val message = SimpleStringProperty("")
-    val messageArray = mutableListOf<String>()
+    private val message = SimpleStringProperty("")
+    private val messageArray = mutableListOf<String>()
 
-    private var lines = 0
-
+    /**
+     * Add a new message.
+     *
+     * Add a message to the message box.
+     * Each new message is printed into a new line.
+     *
+     * @author MMartin09
+     * @since 0.1.0
+     *
+     * @param msg Message that should be printed
+     */
     fun addMessage(msg: String) {
-        if (lines >= 3) deleteLine()
+        if (messageArray.size >= 3) deleteLine()
 
         messageArray.prepend(LocalTime.now().toString() + ": " + msg + "\n")
         val tmp = messageArray.toList().toString().replace("[", "").replace("]", "").replace(", ", "")
 
         message.set(tmp)
-
-        lines++
     }
 
-    fun deleteLine() {
+    /**
+     * Get all messages.
+     *
+     * @returns The messages for the message box. 
+     */
+    fun getMessages() = message.get()
+
+    /**
+     * Delete the oldest message.
+     *
+     * Remove the oldest message from the messages array.
+     * Since new messages are added to the front, the oldest message is the end of the list.
+     *
+     * @author MMartin09
+     * @since 0.1.0
+     */
+    private fun deleteLine() {
         messageArray.removeLast()
-        lines--
     }
 
-    fun <T> MutableList<T>.prepend(element: T) {
+    /**
+     * Add new item at the front of the message list.
+     *
+     * Adds a new item at the front of the message list.
+     *
+     * @author MMartin09
+     * @since 0.1.0
+     *
+     * @param element Element that should be added
+     */
+    private fun MutableList<String>.prepend(element: String) {
         add(0, element)
     }
 }
@@ -155,7 +187,7 @@ class MainView: View() {
         }
 
         bottom {
-            textarea(messageController.message)
+            textarea(messageController.getMessages())
         }
     }
 }
