@@ -94,7 +94,7 @@ class MainView: View() {
                     item("Item 1")
                     item("Item 2")
 
-                    item("Connecto to Arduino").action {
+                    item("Connecto to Arduino", "Shortcut + C").action {
                         val serialDeviceManager = SerialDeviceManager()
                         if (serialDeviceManager.searchArduino(scan = true)) {
                             // SearchArduino will return false if the targetPort is null.
