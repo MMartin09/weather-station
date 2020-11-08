@@ -67,13 +67,28 @@ class MainController: Controller() {
 
 class MessageController: Controller() {
     val message = SimpleStringProperty("")
+    val messageArray = mutableListOf<String>()
+
+    private var lines = 0
 
     fun addMessage(msg: String) {
-        val curMessage = message.get()
+        if (lines >= 3) deleteLine()
 
-        val newMessage = LocalTime.now().toString() + ": " + msg + "\n" + curMessage
+        messageArray.prepend(LocalTime.now().toString() + ": " + msg + "\n")
+        val tmp = messageArray.toList().toString().replace("[", "").replace("]", "").replace(", ", "")
 
-        message.set(newMessage)
+        message.set(tmp)
+
+        lines++
+    }
+
+    fun deleteLine() {
+        messageArray.removeLast()
+        lines--
+    }
+
+    fun <T> MutableList<T>.prepend(element: T) {
+        add(0, element)
     }
 }
 
