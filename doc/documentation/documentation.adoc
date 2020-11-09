@@ -1,6 +1,6 @@
 = Weather - Station
+Version - 0.1.0
 Moser Martin
-v0.1.0
 :doctype: book
 :titlepage:
 :imagesdir: images
@@ -34,16 +34,66 @@ v0.1.0
 
 |===
 
-== test 1
+== Architecture
 
-[plantuml, diagram-classes, png]     
-....
-class BlockProcessor
-class DiagramBlock
-class DitaaBlock
-class PlantUmlBlock
+=== Sensor model
 
-BlockProcessor <|-- DiagramBlock
-DiagramBlock <|-- DitaaBlock
-DiagramBlock <|-- PlantUmlBlock
+[plantuml, sensor-model, png]
 ....
+class Sensor {
+  String name
+  String unit
+  ValueType value_type
+  Float value
+  LocalDateTime last_updated
+}
+....
+
+== Sensors
+
+=== Sensorlist
+
+The list of available sensors is initialized using a JSON file. 
+In this file all sensors and their required attributes are described. 
+So that the application is able to read the file correctly it must correspond exactly to the specified format. 
+
+The file contains an attribute called `sensors`.
+This is a list type and must contain all sensor definitions. 
+A sensor definition is enclosed by a pair of opening and closing braces `{ ... }`.
+Each definition requires a `name`, a `value_type` and a `unit`.
+The ordering of these is important. 
+As value type any of the defined constants in the `ValueType` enum could be used. 
+
+.sensorlist-example
+[#sensorlist-example]
+[source, json]
+----
+{
+  "sensors": [ <1>
+    { <2>
+      "name":  "Sensor 1",
+      "value_type": "FLOAT",
+      "unit": "°C"
+    },
+    {
+      "name":  "Sensor 2",
+      "value_type": "FLOAT",
+      "unit": "°C"
+    }
+  ]
+}
+----
+<1> Start of the sensor list  
+<2> Start of a sensor definition
+
+NOTE: Line breaks and spaces are reduntant. 
+All attributes of a sensor could also be in one line. 
+But for clearnesses it is recommended to use the same formating. 
+
+== Build the documentation
+
+Use: `asciidoctor-pdf -r asciidoctor-diagram documentation.adoc`
+
+**Install rouge**
+
+`gem install rouge`
