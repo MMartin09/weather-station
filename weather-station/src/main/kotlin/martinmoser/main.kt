@@ -57,11 +57,8 @@ class MainController: Controller() {
     val logText = SimpleStringProperty()
 
     init {
-        var sensor_file = File("sensors.json").readText()
-        sensor_file = sensor_file.replace("\n", "")
-
+        val sensor_file = File("sensors.json").readText().replace("\n", "")
         val data = Json.decodeFromString<SensorList>(sensor_file)
-
         sensors.addAll(data.toAsi())
     }
 
