@@ -9,6 +9,14 @@ Moser Martin
 == Introduction
 
 
+== Libraries
+
+=== Kotlinx Serialization 
+
+=== TornadoFX
+
+=== JSerialComm
+
 == Shortcuts 
 
 .Shortcuts
@@ -19,3 +27,16 @@ Moser Martin
 | Connect to Arduino
 
 |===
+
+
+== Test
+
+[plantuml, diagram-classes, png]     
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
