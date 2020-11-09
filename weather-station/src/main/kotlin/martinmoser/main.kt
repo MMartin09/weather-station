@@ -3,22 +3,48 @@ package martinmoser.models
 import com.fazecast.jSerialComm.SerialPort
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
+import kotlinx.serialization.json.Json
 import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MessageController
 import martinmoser.controllers.Status
 import martinmoser.controllers.StatusController
 import tornadofx.*
+import java.io.File
 import java.lang.Thread.sleep
 import java.time.LocalTime
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 import kotlin.random.Random.Default.nextFloat
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+import kotlin.collections.ArrayList
 
+
+@Serializable
+data class SensorType(
+    val name: String,
+    val value_type: ValueType,
+    val unit: String
+)
+
+@Serializable
+class SensorList(
+    val sensors: List<SensorType>
+) {
+
+    fun toAsi(): ArrayList<Sensor> {
+        val sensorList: ArrayList<Sensor> = arrayListOf()
+
+        sensors.forEach {
+            sensorList.add(Sensor(it.name, it.value_type, it.unit))
+        }
+
+        return sensorList
+    }
+}
 
 fun main(args: Array<String>) {
-    println("Hello World!")
-
     launch<MainApp>(args)
 }
 
@@ -31,9 +57,12 @@ class MainController: Controller() {
     val logText = SimpleStringProperty()
 
     init {
-        sensors.add(Sensor("Temp Sensor", ValueType.FLOAT, "°C"))
-        sensors.add(Sensor("Sensor 1", ValueType.FLOAT, "°C"))
-        sensors.add(Sensor("Sensor 2", ValueType.FLOAT, "°C"))
+        var sensor_file = File("sensors.json").readText()
+        sensor_file = sensor_file.replace("\n", "")
+
+        val data = Json.decodeFromString<SensorList>(sensor_file)
+
+        sensors.addAll(data.toAsi())
     }
 
     fun refresh() {

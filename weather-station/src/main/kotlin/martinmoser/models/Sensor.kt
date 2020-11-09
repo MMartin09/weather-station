@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 
 val EPOCH = LocalDateTime.of(1970, 1, 1, 0, 0)
 
-open class Sensor(
+class Sensor(
         name: String? = null,
         value_type: ValueType? = null,
         unit: String? = null
