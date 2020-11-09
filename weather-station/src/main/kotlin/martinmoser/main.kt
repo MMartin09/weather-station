@@ -1,19 +1,15 @@
 package martinmoser.models
 
-import javafx.beans.property.SimpleStringProperty
-import javafx.collections.FXCollections
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.Serializable
 import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
+import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
 import martinmoser.controllers.StatusController
 import tornadofx.*
-import java.io.File
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 import kotlin.random.Random.Default.nextFloat
-import kotlinx.serialization.*
-import kotlin.collections.ArrayList
 
 
 @Serializable
@@ -44,27 +40,6 @@ fun main(args: Array<String>) {
 }
 
 class MainApp: App(MainView::class)
-
-class MainController: Controller() {
-    val sensors = FXCollections.observableArrayList<Sensor>()
-    var model = SensorModel()
-
-    val logText = SimpleStringProperty()
-
-    init {
-        val sensor_file = File("sensors.json").readText().replace("\n", "")
-        val data = Json.decodeFromString<SensorList>(sensor_file)
-        sensors.addAll(data.toAsi())
-    }
-
-    fun refresh() {
-        model.commit()
-
-        var x = sensors.toList()
-        sensors.clear()
-        sensors.addAll(x)
-    }
-}
 
 class MainView: View() {
     val mainController: MainController by inject()

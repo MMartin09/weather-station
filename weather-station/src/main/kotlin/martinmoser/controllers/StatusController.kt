@@ -4,6 +4,14 @@ import javafx.beans.property.SimpleStringProperty
 import martinmoser.models.Status
 import tornadofx.Controller
 
+/**
+ * Controller for the connection status.
+ *
+ * The controller is used to set the status message in the main window.
+ *
+ * @author MMartin09
+ * @since 0.1.0
+ */
 class StatusController: Controller() {
     private val statusText = SimpleStringProperty("Status: ")
 
