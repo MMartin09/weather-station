@@ -26,6 +26,9 @@ class MainController: Controller() {
         sensors.addAll(data.toAsi())
     }
 
+    /**
+     * TODO: this function must be optimized and documented.
+     */
     fun refresh() {
         model.commit()
 
