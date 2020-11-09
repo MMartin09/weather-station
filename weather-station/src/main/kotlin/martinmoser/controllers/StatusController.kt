@@ -1,6 +1,7 @@
 package martinmoser.controllers
 
 import javafx.beans.property.SimpleStringProperty
+import martinmoser.models.Status
 import tornadofx.Controller
 
 class StatusController: Controller() {

@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="825a1899-e9b0-47aa-9d0a-576e55edcfc7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/MainController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../doc/documentation/documentation.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/documentation.adoc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensors.json" beforeDir="false" afterPath="$PROJECT_DIR$/sensors.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/SerialDevice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/SerialDevice.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/controllers/Status.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/Status.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/controllers/StatusController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/controllers/StatusController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/ValueType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/ValueType.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin Enum" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -43,18 +50,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Projects\weather-station\weather-station" />
-    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="martinmoser.models" />
+      <recent name="martinmoser" />
       <recent name="models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\weather-station\weather-station\src\main\kotlin" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="martinmoser" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Projects\weather-station\weather-station\src\main\kotlin" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\weather-station\weather-station" />
     </key>
   </component>
   <component name="RunManager">
@@ -100,10 +108,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1064" y="582" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.2560.1400@0.0.2560.1400" timestamp="1604829702936" />
-    <state x="1699" y="491" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1604517510244">
+    <state x="1699" y="491" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1604946076625">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1699" y="491" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1604517510244" />
+    <state x="1699" y="491" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1604946076625" />
     <state x="1061" y="455" key="FileChooserDialogImpl" timestamp="1604507743105">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -132,9 +140,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1124" y="472" key="refactoring.ChangeSignatureDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1604860867235" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1604861200867">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1604946131316">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1604861200867" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1604946131316" />
   </component>
 </project>

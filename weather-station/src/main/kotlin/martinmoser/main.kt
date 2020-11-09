@@ -1,23 +1,18 @@
 package martinmoser.models
 
-import com.fazecast.jSerialComm.SerialPort
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import kotlinx.serialization.json.Json
 import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MessageController
-import martinmoser.controllers.Status
 import martinmoser.controllers.StatusController
 import tornadofx.*
 import java.io.File
-import java.lang.Thread.sleep
-import java.time.LocalTime
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 import kotlin.random.Random.Default.nextFloat
 import kotlinx.serialization.*
-import kotlinx.serialization.json.*
 import kotlin.collections.ArrayList
 
 
@@ -148,7 +143,6 @@ class MainView: View() {
                 }
 
                 mainController.model.rebindOnChange(this) { selectedSensor -> item = selectedSensor ?: Sensor()
-
                     mainController.model.commit()
                 }
             }

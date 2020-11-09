@@ -71,12 +71,12 @@ As value type any of the defined constants in the `ValueType` enum could be used
 {
   "sensors": [ <1>
     { <2>
-      "name":  "Sensor 1",
+      "name": "Sensor 1",
       "value_type": "FLOAT",
       "unit": "°C"
     },
     {
-      "name":  "Sensor 2",
+      "name": "Sensor 2",
       "value_type": "FLOAT",
       "unit": "°C"
     }

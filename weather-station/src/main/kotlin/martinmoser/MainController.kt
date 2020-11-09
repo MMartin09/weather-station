@@ -1,0 +1,4 @@
+package martinmoser
+
+class MainController {
+}

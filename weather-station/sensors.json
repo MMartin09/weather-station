@@ -1,17 +1,17 @@
 {
   "sensors": [
     {
-      "name":  "Temp Sensor",
+      "name": "Temp Sensor",
       "value_type": "FLOAT",
       "unit": "°C"
     },
     {
-      "name":  "Sensor 1",
+      "name": "Sensor 1",
       "value_type": "FLOAT",
       "unit": "°C"
     },
     {
-      "name":  "Sensor 2",
+      "name": "Sensor 2",
       "value_type": "FLOAT",
       "unit": "°C"
     }

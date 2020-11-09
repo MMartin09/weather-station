@@ -2,8 +2,8 @@ package martinmoser
 
 import com.fazecast.jSerialComm.SerialPort
 import martinmoser.controllers.MessageController
-import martinmoser.controllers.Status
 import martinmoser.controllers.StatusController
+import martinmoser.models.Status
 import tornadofx.find
 
 
