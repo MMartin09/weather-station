@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="825a1899-e9b0-47aa-9d0a-576e55edcfc7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../doc/documentation/documentation.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/documentation.adoc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/sensors.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
