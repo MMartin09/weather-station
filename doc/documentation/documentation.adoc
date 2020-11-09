@@ -1,13 +1,19 @@
 = Weather - Station
-Moser Martin 
-:reproducible:
+Moser Martin
+v0.1.0
+:doctype: book
+:titlepage:
+:imagesdir: images
+:xrefstyle: short
+:source-highlighter: rouge
+:autofit-option:
+:icons: font
+:plantuml:
 :listing-caption: Listing
 :source-highlighter: rouge
-:toc:
-:title-page:
+:toc: left
 
 == Introduction
-
 
 == Libraries
 
@@ -28,10 +34,10 @@ Moser Martin
 
 |===
 
-
-== Test
+== test 1
 
 [plantuml, diagram-classes, png]     
+....
 class BlockProcessor
 class DiagramBlock
 class DitaaBlock
@@ -40,3 +46,4 @@ class PlantUmlBlock
 BlockProcessor <|-- DiagramBlock
 DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
+....
