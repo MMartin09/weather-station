@@ -5,7 +5,6 @@ import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.ButtonBar
 import javafx.scene.control.ButtonType
 import martinmoser.SerialDevice
-import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
 import martinmoser.controllers.SerialDeviceController
@@ -25,17 +24,12 @@ import kotlin.random.Random
  * @since 0.1.0
  */
 class MainView: View() {
-    val mainController: MainController by inject()
+    private val mainController: MainController by inject()
     private val serialDeviceController: SerialDeviceController by inject()
     private val messageController: MessageController by inject()
     private val statusController: StatusController by inject()
 
-    var serialDevice: SerialDevice? = null
-
     init {
-        statusController.setStatus(Status.DISCONNECTED)
-
-
         // create a daemon thread
         val timer = Timer("schedule", true);
 

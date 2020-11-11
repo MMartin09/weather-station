@@ -10,6 +10,7 @@ import tornadofx.ViewModel
  * Controller for the connection status.
  *
  * The controller is used to set the status message in the main window.
+ * At initialization the status is set to disconnected.
  *
  * @author MMartin09
  * @since 0.1.0
@@ -17,6 +18,10 @@ import tornadofx.ViewModel
 class StatusController: Controller() {
     private var status: Status = Status.DISCONNECTED
     private val statusText = SimpleStringProperty("Status: ")
+
+    init {
+        setStatus(Status.DISCONNECTED)
+    }
 
     /**
      * Set a new status.

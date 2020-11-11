@@ -2,3 +2,4 @@
 weather-station/build/*
 weather-station/.gradle/*
 weather-station/.idea/*
+weather-station/.idea/workspace.xml
