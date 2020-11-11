@@ -1,10 +1,14 @@
 package martinmoser
 
 import com.fazecast.jSerialComm.SerialPort
+import com.fazecast.jSerialComm.SerialPortDataListener
+import com.fazecast.jSerialComm.SerialPortEvent
 import martinmoser.controllers.MessageController
 import martinmoser.controllers.StatusController
 import martinmoser.models.Status
 import tornadofx.find
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 
 /**
@@ -44,7 +48,9 @@ class SerialDevice(port: SerialPort) {
 
         comPort.openPort()
 
-        while (!comPort.isOpen && tries < 2) {
+        val input = BufferedReader(InputStreamReader(comPort.getInputStream()));
+
+        while (!comPort.isOpen && tries < 3) {
             messageController.addMessage("Connection to Arduino failed!")
             statusController.setStatus(Status.ERROR)
 
@@ -56,6 +62,7 @@ class SerialDevice(port: SerialPort) {
 
         messageController.addMessage("Succesfull connected to the Arduino on port ${comPort.systemPortName}!")
         statusController.setStatus(Status.CONNECTED)
+
         return true
     }
 
@@ -81,7 +88,7 @@ class SerialDevice(port: SerialPort) {
 
         if (comPort.isOpen) comPort.closePort()
 
-        while (comPort.isOpen && tries < 2) {
+        while (comPort.isOpen && tries < 3) {
             messageController.addMessage("Trying again to close the port!")
             statusController.setStatus(Status.ERROR)
 

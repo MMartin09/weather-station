@@ -1,5 +1,9 @@
 package martinmoser.views
 
+import javafx.scene.control.Alert
+import javafx.scene.control.Alert.AlertType
+import javafx.scene.control.ButtonBar
+import javafx.scene.control.ButtonType
 import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MainController
@@ -11,6 +15,7 @@ import tornadofx.*
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 import kotlin.random.Random
+
 
 /**
  * Main view of the application
@@ -54,6 +59,40 @@ class MainView: View() {
             mainController.refresh()
         }
     }
+
+    override fun onDock() {
+        currentStage?.setOnCloseRequest { evt -> val tt = evt
+            var x = 9
+
+            val alert = Alert(AlertType.CONFIRMATION)
+            alert.title = "Confirmation Dialog"
+            alert.headerText = "Look, a Confirmation Dialog"
+            alert.contentText = "Are you ok with this?"
+
+            val okButton = ButtonType("Yes", ButtonBar.ButtonData.YES)
+            val noButton = ButtonType("No", ButtonBar.ButtonData.NO)
+
+            alert.buttonTypes.setAll(okButton, noButton)
+
+            val result = alert.showAndWait()
+            if (result.get() == okButton) {
+               x = 8
+            } else {
+                x = 10
+            }
+
+            println("X: $x")
+
+            if (x == 10) {
+                tt.consume()
+
+                println("Here")
+            } else {
+                println("Closing!")
+            }
+        }
+    }
+
 
     override val root = borderpane  {
         top {

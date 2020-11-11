@@ -1,9 +1,16 @@
 package martinmoser.models
 
+import javafx.application.Platform
+import javafx.scene.control.Alert
+import javafx.scene.control.ButtonBar
+import javafx.scene.control.ButtonType
+import javafx.stage.Stage
 import kotlinx.serialization.Serializable
 import martinmoser.views.MainView
 import tornadofx.App
+import tornadofx.beforeShutdown
 import tornadofx.launch
+import java.awt.event.WindowEvent
 import java.util.*
 
 
@@ -34,4 +41,4 @@ fun main(args: Array<String>) {
     launch<MainApp>(args)
 }
 
-class MainApp: App(MainView::class)
+class MainApp: App(MainView::class) 

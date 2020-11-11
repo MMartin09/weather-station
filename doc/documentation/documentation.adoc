@@ -15,6 +15,14 @@ Moser Martin
 
 == Introduction
 
+== Disclaimer
+
+**Arduino IDE**
+
+At the time this document was written, the Arduino IDE with version 1.8.13 was used. 
+If another version is used, the IDE may looks not the same or possible some steps are not one by one reproducible. 
+But the IDE is in such a state that it does not change to much from version to version so it should not be a problem do follow along. 
+
 == Libraries
 
 === Kotlinx Serialization 
@@ -33,6 +41,45 @@ Moser Martin
 | Connect to Arduino
 
 |===
+
+== Setup 
+
+=== Arduino IDE
+
+NOTE: Used version at the time of writing Arduino SAMD Boards package = version 1.8.9 Arduino_MKRENV = version 1.1.0.
+
+**MKR board**
+
+To be able to program the Arduino using the official Arduino IDE, the board has to be installed first. 
+This could be done with the integrated board manager. 
+Select 'Tools' -> 'Board' -> 'Boards Manager...''. 
+This will open up a new window which provide functionality to add, update or remove boards. 
+Search for a package called 'Arduino SAMD Boards (32-bits ARM Cortex M0+)'. 
+This package is required for the Arduino MKR 1010 WiFi. 
+Select the newest version of the library and install it. 
+
+.Arduino IDE Board Manager
+[#img-arduino-board-manager]
+image::ArduinoBoardManager.png[ArduinoBoardManager, 500, 300]
+
+After installation, the board must be selected. 
+This is required, for the IDE to know for which controller the code must be compiled. 
+Select 'Tools' -> 'Board' -> 'Arduino SAMD Boards (32-bits ARM Cortex M0+)' -> 'Arduino MKR WiFi 1010'
+
+**MKR Env shield**
+
+The usage of the Env shield requires a library which provides the functions to read the sensors. 
+It is an official Arduino library, so the installation could be done using the Arduino IDE. 
+Select 'Tools' -> 'Manage Libraries...'. 
+This will open the Library Manager, where libraries could be installed, updated or uninstalled. 
+Search for a library called 'Arduino_MKRENV' and install the newest version. 
+
+NOTE: It is not required necessary to use the library but it is really recommended since it already implement all functions. 
+If the library is not used all of the functions must be implemented by hand. 
+
+.Arduino IDE Library Manager
+[#img-arduino-library-manager]
+image::ArduinoLibraryManager.png[ArduinoBoardManager,500,300]
 
 == Architecture
 
