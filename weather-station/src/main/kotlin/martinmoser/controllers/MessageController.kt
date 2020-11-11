@@ -40,6 +40,9 @@ class MessageController: Controller() {
     /**
      * Get all messages.
      *
+     * @author MMartin09
+     * @since 0.1.0
+     *
      * @returns The messages for the message box.
      */
     fun getMessages(): SimpleStringProperty { return message }

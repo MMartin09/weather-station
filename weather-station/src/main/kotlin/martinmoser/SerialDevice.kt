@@ -60,6 +60,24 @@ class SerialDevice(port: SerialPort) {
 
         if (!comPort.isOpen) return false
 
+        comPort.addDataListener(object : SerialPortDataListener {
+            override fun getListeningEvents(): Int {
+                return SerialPort.LISTENING_EVENT_DATA_AVAILABLE
+            }
+
+            override fun serialEvent(event: SerialPortEvent) {
+                if (event.eventType != SerialPort.LISTENING_EVENT_DATA_AVAILABLE) return  //wait until we receive data
+                val newData = ByteArray(comPort.bytesAvailable()) //receive incoming bytes
+                comPort.readBytes(newData, newData.size.toLong()) //read incoming bytes
+                val serialData = String(newData) //convert bytes to string
+
+                //serialData wordt verstuurd naar algoritme
+                //a.algoritme_serial(serialData)
+                //print string received from the Arduino
+                println(serialData)
+            }
+        })
+
         messageController.addMessage("Succesfull connected to the Arduino on port ${comPort.systemPortName}!")
         statusController.setStatus(Status.CONNECTED)
 
