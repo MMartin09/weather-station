@@ -28,8 +28,11 @@ class MainView: View() {
     val messageController: MessageController by inject()
     private val statusController: StatusController by inject()
 
+    var serialDevice: SerialDevice? = null
+
     init {
         statusController.setStatus(Status.DISCONNECTED)
+
 
         // create a daemon thread
         val timer = Timer("schedule", true);
@@ -62,8 +65,6 @@ class MainView: View() {
 
     override fun onDock() {
         currentStage?.setOnCloseRequest { evt ->
-            var x = 9
-
             val alert = Alert(AlertType.CONFIRMATION)
             alert.title = "Confirmation Dialog"
             alert.headerText = "Look, a Confirmation Dialog"
@@ -75,22 +76,9 @@ class MainView: View() {
             alert.buttonTypes.setAll(okButton, noButton)
 
             val result = alert.showAndWait()
-            if (result.get() == okButton) {
-               x = 8
-            } else {
-                x = 10
-                evt.consume()
+            if (result.get() == noButton) {
+               evt.consume()
             }
-
-            /*println("X: $x")
-
-            if (x == 10) {
-                tt.consume()
-
-                println("Here")
-            } else {
-                println("Closing!")
-            }*/
         }
     }
 
@@ -107,15 +95,47 @@ class MainView: View() {
                     item("Item 1")
                     item("Item 2")
 
-                    item("Connect to to Arduino", "Shortcut + C").action {
-                        val serialDeviceManager = SerialDeviceManager()
-                        if (serialDeviceManager.searchArduino(scan = true)) {
-                            // SearchArduino will return false if the targetPort is null.
-                            // So no null safe call is required
-                            val serialDevice = SerialDevice(serialDeviceManager.targetPort!!)
-                            serialDevice.connect()
+                    item("Connect to Arduino", "Shortcut + C").action {
+                        if (statusController.getStatus() == Status.CONNECTED) {
+                            this.items.forEach{
+                                if (it.text == "Disconnect from Arduino") {
+                                    it.text = "Connect to Arduino"
+                                }
+                            }
+
+                            serialDevice?.disconnect()
+
+                        } else {
+                            // TODO this code should not be placed here
+                            val serialDeviceManager = SerialDeviceManager()
+                            if (serialDeviceManager.searchArduino(scan = true)) {
+                                // SearchArduino will return false if the targetPort is null.
+                                // So no null safe call is required
+                                serialDevice = SerialDevice(serialDeviceManager.targetPort!!)
+                                if (serialDevice!!.connect()) {
+                                    this.items.forEach{
+                                        if (it.text == "Connect to Arduino") {
+                                            it.text = "Disconnect from Arduino"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
+
+                    /*item("Test").action {
+                        /*this.items.forEach{
+                            if (it.text == "CC") it.text = "CCC"
+                        }*/
+
+                        // Access over number
+                        // this.items[4].text = "ccc"
+                    }
+
+                    item("CC") {
+                        //val x = label(statusController.getStatus())
+                        //this.text = x.text
+                    }*/
                 }
             }
         }
@@ -155,7 +175,7 @@ class MainView: View() {
         bottom {
             vbox {
                 textarea(messageController.getMessages())
-                label(statusController.getStatus())
+                label(statusController.getStatusText())
             }
         }
     }
