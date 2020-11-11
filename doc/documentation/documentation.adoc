@@ -137,6 +137,66 @@ NOTE: Line breaks and spaces are reduntant.
 All attributes of a sensor could also be in one line. 
 But for clearnesses it is recommended to use the same formating. 
 
+== Problems
+
+=== Confirmation dialog onClose
+
+There are no good resources online for the implementation of a confirmation dialog on a close request. 
+Due to this it took some time to implement this. 
+
+The main goal of the dialog is to ask the user is sure if he want to close the application. 
+For example, if the application is still connected to an Arduino the user will be asked if the Arduino should be disconnected and the application closed. 
+
+The following code demonstrates a simple example how a confirmation dialog could be shown when the user clicks on the 'close' button.
+This is only a general usage example how the functionality could be implemented and not a real code sample from the application. 
+
+To show a dialog the `setOnCloseRequest` must be overridden. 
+This could be done in the `onDock` function of the view. 
+
+.Disable onCloseRequest
+[source, kotlin]
+----
+// ...
+
+val close: Boolean = false
+
+override fun onDock() {
+  currentStage?.setOnCloseRequest { evt ->
+    if (!close) evt.consume()
+  }
+}
+
+// ...
+----
+
+The above example shows how close event could be disabled. 
+If the event is `consumed` the application will not close. 
+The next step is to replace the boolean variable by an alert dialog. 
+
+[source, kotlin]
+----
+override fun onDock() {
+  currentStage?.setOnCloseRequest { evt ->
+    val alert = Alert(AlertType.CONFIRMATION)
+    alert.title = "Close the application"
+    alert.headerText = "Are you sure you want to close the application?"
+    alert.contentText = "You have some unsaved stuff. Are you sure you want to continue?"
+
+    val okButton = ButtonType("Yes", ButtonBar.ButtonData.YES)
+    val noButton = ButtonType("No", ButtonBar.ButtonData.NO)
+
+    alert.buttonTypes.setAll(okButton, noButton)
+
+    val result = alert.showAndWait()
+    if (result.get() == okButton) {
+      // ...
+    } else {
+      evt.consume()
+    }
+  }
+}
+----
+
 == Build the documentation
 
 Use: `asciidoctor-pdf -r asciidoctor-diagram documentation.adoc`

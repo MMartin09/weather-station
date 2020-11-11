@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/../doc/documentation/documentation.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/documentation.adoc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../doc/documentation/documentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/documentation/documentation.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/SerialDevice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/SerialDevice.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/views/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/views/MainView.kt" afterDir="false" />
     </list>
@@ -118,22 +117,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1604507743105" />
-    <state width="1237" height="311" key="GridCell.Tab.0.bottom" timestamp="1605087368321">
+    <state width="2517" height="311" key="GridCell.Tab.0.bottom" timestamp="1605088460505">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1237" height="311" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605087368321" />
-    <state width="1237" height="311" key="GridCell.Tab.0.center" timestamp="1605087368321">
+    <state width="2517" height="311" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605088460505" />
+    <state width="2517" height="311" key="GridCell.Tab.0.center" timestamp="1605088460505">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1237" height="311" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605087368321" />
-    <state width="1237" height="311" key="GridCell.Tab.0.left" timestamp="1605087368321">
+    <state width="2517" height="311" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605088460505" />
+    <state width="2517" height="311" key="GridCell.Tab.0.left" timestamp="1605088460505">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1237" height="311" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605087368321" />
-    <state width="1237" height="311" key="GridCell.Tab.0.right" timestamp="1605087368321">
+    <state width="2517" height="311" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605088460505" />
+    <state width="2517" height="311" key="GridCell.Tab.0.right" timestamp="1605088460505">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1237" height="311" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605087368321" />
+    <state width="2517" height="311" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605088460505" />
     <state x="971" y="514" key="SettingsEditor" timestamp="1604510232492">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

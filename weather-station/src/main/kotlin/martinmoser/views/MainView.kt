@@ -61,7 +61,7 @@ class MainView: View() {
     }
 
     override fun onDock() {
-        currentStage?.setOnCloseRequest { evt -> val tt = evt
+        currentStage?.setOnCloseRequest { evt ->
             var x = 9
 
             val alert = Alert(AlertType.CONFIRMATION)
@@ -79,9 +79,10 @@ class MainView: View() {
                x = 8
             } else {
                 x = 10
+                evt.consume()
             }
 
-            println("X: $x")
+            /*println("X: $x")
 
             if (x == 10) {
                 tt.consume()
@@ -89,7 +90,7 @@ class MainView: View() {
                 println("Here")
             } else {
                 println("Closing!")
-            }
+            }*/
         }
     }
 
