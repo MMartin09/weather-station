@@ -8,6 +8,7 @@ import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
 import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
+import martinmoser.controllers.SerialDeviceController
 import martinmoser.controllers.StatusController
 import martinmoser.models.Sensor
 import martinmoser.models.Status
@@ -25,7 +26,8 @@ import kotlin.random.Random
  */
 class MainView: View() {
     val mainController: MainController by inject()
-    val messageController: MessageController by inject()
+    private val serialDeviceController: SerialDeviceController by inject()
+    private val messageController: MessageController by inject()
     private val statusController: StatusController by inject()
 
     var serialDevice: SerialDevice? = null
@@ -97,45 +99,25 @@ class MainView: View() {
 
                     item("Connect to Arduino", "Shortcut + C").action {
                         if (statusController.getStatus() == Status.CONNECTED) {
-                            this.items.forEach{
-                                if (it.text == "Disconnect from Arduino") {
-                                    it.text = "Connect to Arduino"
+                            if (serialDeviceController.disconnect()) {
+                                this.items.forEach{
+                                    if (it.text == "Disconnect from Arduino") {
+                                        it.text = "Connect to Arduino"
+                                    }
                                 }
                             }
+                        }
 
-                            serialDevice?.disconnect()
-
-                        } else {
-                            // TODO this code should not be placed here
-                            val serialDeviceManager = SerialDeviceManager()
-                            if (serialDeviceManager.searchArduino(scan = true)) {
-                                // SearchArduino will return false if the targetPort is null.
-                                // So no null safe call is required
-                                serialDevice = SerialDevice(serialDeviceManager.targetPort!!)
-                                if (serialDevice!!.connect()) {
-                                    this.items.forEach{
-                                        if (it.text == "Connect to Arduino") {
-                                            it.text = "Disconnect from Arduino"
-                                        }
+                        else {
+                            if (serialDeviceController.connect()) {
+                                this.items.forEach{
+                                    if (it.text == "Connect to Arduino") {
+                                        it.text = "Disconnect from Arduino"
                                     }
                                 }
                             }
                         }
                     }
-
-                    /*item("Test").action {
-                        /*this.items.forEach{
-                            if (it.text == "CC") it.text = "CCC"
-                        }*/
-
-                        // Access over number
-                        // this.items[4].text = "ccc"
-                    }
-
-                    item("CC") {
-                        //val x = label(statusController.getStatus())
-                        //this.text = x.text
-                    }*/
                 }
             }
         }
