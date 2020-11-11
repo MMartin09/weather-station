@@ -1,13 +1,17 @@
 package martinmoser.controllers
 
+import javafx.beans.property.ListProperty
+import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
+import javafx.collections.ObservableList
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import martinmoser.models.Sensor
 import martinmoser.models.SensorList
 import martinmoser.models.SensorModel
 import tornadofx.Controller
+import tornadofx.toProperty
 import java.io.File
 
 /**
@@ -24,6 +28,14 @@ class MainController: Controller() {
         val sensor_file = File("sensors.json").readText().replace("\n", "")
         val data = Json.decodeFromString<SensorList>(sensor_file)
         sensors.addAll(data.toAsi())
+    }
+
+    fun sensorNames(): ObservableList<String>? {
+        val x = FXCollections.observableArrayList<String>()
+
+        sensors.forEach{ x.add(it.name)}
+
+        return x
     }
 
     /**

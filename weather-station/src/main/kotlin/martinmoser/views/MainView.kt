@@ -117,11 +117,7 @@ class MainView: View() {
         }
 
         left {
-            listview<String> {
-                items.add("Temp Sensor")
-                items.add("Sensor 1")
-                items.add("Sensor 2")
-
+            listview<String>(mainController.sensorNames()) {
                 contextmenu {
                     item("Details")
                 }

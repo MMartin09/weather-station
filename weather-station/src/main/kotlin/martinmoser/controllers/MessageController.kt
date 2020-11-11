@@ -15,7 +15,7 @@ class MessageController: Controller() {
     private val message = SimpleStringProperty("")
     private val messageArray = mutableListOf<String>()
 
-    private val maxNumberOfLines = 5
+    private val maxNumberOfLines = 10
 
     /**
      * Add a new message.
