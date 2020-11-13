@@ -137,6 +137,18 @@ NOTE: Line breaks and spaces are reduntant.
 All attributes of a sensor could also be in one line. 
 But for clearnesses it is recommended to use the same formating. 
 
+== Use - cases
+
+=== Closing the application
+
+*Case 1:* Connection Status Connected  
+
+Show a confirmation dialog that the Arduino will be disconnected before the application will be closed. 
+
+*Case 2:* Connection Status anything except Connected
+
+Close the application without a confirmation dialog. 
+
 == Problems
 
 === Confirmation dialog onClose
@@ -173,6 +185,7 @@ The above example shows how close event could be disabled.
 If the event is `consumed` the application will not close. 
 The next step is to replace the boolean variable by an alert dialog. 
 
+.Show confirmation dialog onCloseRequest
 [source, kotlin]
 ----
 override fun onDock() {
@@ -196,6 +209,9 @@ override fun onDock() {
   }
 }
 ----
+
+The above code sample shows the new `onDock` function with the confirmation dialog. 
+The example uses an alert with custom yes and no button. 
 
 == Build the documentation
 

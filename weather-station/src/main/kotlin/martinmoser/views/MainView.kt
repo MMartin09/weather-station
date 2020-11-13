@@ -4,6 +4,7 @@ import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.ButtonBar
 import javafx.scene.control.ButtonType
+import javafx.scene.input.KeyCombination
 import martinmoser.SerialDevice
 import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
@@ -89,7 +90,9 @@ class MainView: View() {
 
                 menu("Edit") {
                     item("Item 1")
-                    item("Item 2")
+                    item("Item 2").action {
+
+                    }
 
                     item("Connect to Arduino", "Shortcut + C").action {
                         if (statusController.getStatus() == Status.CONNECTED) {
@@ -111,6 +114,12 @@ class MainView: View() {
                                 }
                             }
                         }
+                    }
+
+                    item(name = "This is a test", keyCombination = "Ctrl + E").action {
+                        var tmp = this.items[4]
+
+                        tmp = item("This is the new item", KeyCombination = "Ctrl + F")
                     }
                 }
             }
