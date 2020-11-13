@@ -44,6 +44,17 @@ But the IDE is in such a state that it does not change to much from version to v
 
 == Setup 
 
+=== Java 
+
+The project uses the OpenJDK from Adopt. 
+Currently version 11 (LTS) is used. 
+The JDK for each Operating System could be downloaded https://adoptopenjdk.net/releases.html[here].
+
+NOTE: Please note, the application was only tested with the AdoptOpenJDK 11. 
+It is possible to use another Java distributor or version. 
+But it is not sure that the application or the libraries are (fully) compatible with the used Java. 
+It is also not recommended to use a older version. 
+
 === Arduino IDE
 
 NOTE: Used version at the time of writing Arduino SAMD Boards package = version 1.8.9 Arduino_MKRENV = version 1.1.0.
@@ -151,6 +162,34 @@ Close the application without a confirmation dialog.
 
 == Problems
 
+=== TornadoFX ListView
+
+The official releases of TornadoFX have some problems with Java 9+. 
+One problem is the ListView. 
+If an action is defined and the `clickCount` set, the application reports a problem when mouse is clicked. 
+For example if `clickCount = 2` and an item is double clicked with the mouse, an error will be thrown. 
+
+NOTE: This only happens with the mouse. 
+If an item is selected and the click function activated by hitting the enter key everything works. 
+
+To use the `listView` properly with a newer version of Java (currently Java 11 is used), a newer version of TornadoFX must be used. 
+This is (currently) only possible by using a snapshot. 
+
+The way that seems working is to use version `2.0.0-SNAPSHOT`. 
+The solution is proposed here https://github.com/edvin/tornadofx/issues/899#issuecomment-488249680. 
+
+.Use TornadoFX 2.0.0-SNAPSHOT
+[source, gradle]
+----
+repositories {
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+    compile 'no.tornado:tornadofx:2.0.0-SNAPSHOT'
+}
+----
+
 === Confirmation dialog onClose
 
 There are no good resources online for the implementation of a confirmation dialog on a close request. 
@@ -212,6 +251,39 @@ override fun onDock() {
 
 The above code sample shows the new `onDock` function with the confirmation dialog. 
 The example uses an alert with custom yes and no button. 
+
+=== Dokka dependencie problems
+
+Dokka seems to make problems with missing dependencies. 
+If everything is set up like in the official documentation https://github.com/Kotlin/dokka[see] there are some problems. 
+
+NOTE: Using dokka was tested on two devices and on both the same problem occured. 
+It is not sure if this problem always happens or if this is just related to the current version.
+
+There is an issue which provides a solution. 
+The solution is proposed here https://github.com/Kotlin/dokka/issues/41#issuecomment-699723119.
+
+.Fix dokka dependency problems
+[source, gradle]
+----
+repositories {
+  //... other repos
+  exclusiveContent {
+    forRepository {
+      maven {
+        name = "JCenter"
+        setUrl("https://jcenter.bintray.com/")
+      }
+    }
+    filter {
+      // Required for Dokka
+      includeModule("org.jetbrains.kotlinx", "kotlinx-html-jvm")
+      includeGroup("org.jetbrains.dokka")
+      includeModule("org.jetbrains", "markdown")
+    }
+  }
+}
+----
 
 == Build the documentation
 
