@@ -5,6 +5,7 @@ import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.ButtonBar
 import javafx.scene.control.ButtonType
 import javafx.scene.input.KeyCombination
+import javafx.stage.StageStyle
 import martinmoser.SerialDevice
 import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
@@ -12,6 +13,7 @@ import martinmoser.controllers.SerialDeviceController
 import martinmoser.controllers.StatusController
 import martinmoser.models.Sensor
 import martinmoser.models.Status
+import martinmoser.views.dialogs.SensorDetailsDialog
 import tornadofx.*
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
@@ -122,7 +124,9 @@ class MainView: View() {
         left {
             listview<String>(mainController.sensorNames()) {
                 contextmenu {
-                    item("Details")
+                    item("Details").action {
+                        find<SensorDetailsDialog>().openModal(stageStyle = StageStyle.UTILITY)
+                    }
                 }
 
                 onUserSelect(2) { println("Test") }
