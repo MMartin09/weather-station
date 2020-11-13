@@ -115,12 +115,6 @@ class MainView: View() {
                             }
                         }
                     }
-
-                    item(name = "This is a test", keyCombination = "Ctrl + E").action {
-                        var tmp = this.items[4]
-
-                        tmp = item("This is the new item", KeyCombination = "Ctrl + F")
-                    }
                 }
             }
         }
@@ -130,6 +124,8 @@ class MainView: View() {
                 contextmenu {
                     item("Details")
                 }
+
+                onUserSelect(2) { println("Test") }
             }
         }
 

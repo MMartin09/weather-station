@@ -14,6 +14,7 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
+    maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
     maven(url="https://dl.bintray.com/kotlin/dokka")
 
     exclusiveContent {
@@ -37,7 +38,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 dependencies {
-    implementation("no.tornado:tornadofx:1.7.17")
+    compile("no.tornado:tornadofx:2.0.0-SNAPSHOT")
     implementation("javax.usb:usb-api:1.0.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     compile("com.fazecast:jSerialComm:[2.0.0,3.0.0)")
