@@ -38,7 +38,10 @@ But the IDE is in such a state that it does not change to much from version to v
 |Shortcut |Action
 
 |`Ctrl + C`
-| Connect to Arduino
+| Connect to the Arduino
+
+|`Ctrl + C`
+| Disconnect from the Arduino
 
 |===
 

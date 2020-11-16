@@ -82,7 +82,7 @@ class MainView: View() {
                     evt.consume()
                 }
 
-                // If yes is clicked, discconect from the Arduino 
+                // If yes is clicked, discconect from the Arduino
                 else {
                     if (!serialDeviceController.disconnect())
                         evt.consume()
