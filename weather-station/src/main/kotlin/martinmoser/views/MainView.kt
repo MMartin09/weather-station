@@ -65,19 +65,28 @@ class MainView: View() {
 
     override fun onDock() {
         currentStage?.setOnCloseRequest { evt ->
-            val alert = Alert(AlertType.CONFIRMATION)
-            alert.title = "Confirmation Dialog"
-            alert.headerText = "Look, a Confirmation Dialog"
-            alert.contentText = "Are you ok with this?"
+            // Display the confirmation dialog only if an Arduino is still connected
+            if (statusController.getStatus() == Status.CONNECTED) {
+                val alert = Alert(AlertType.CONFIRMATION)
+                alert.title = "Confirmation Dialog"
+                alert.headerText = "Look, a Confirmation Dialog"
+                alert.contentText = "Are you ok with this?"
 
-            val okButton = ButtonType("Yes", ButtonBar.ButtonData.YES)
-            val noButton = ButtonType("No", ButtonBar.ButtonData.NO)
+                val okButton = ButtonType("Yes", ButtonBar.ButtonData.YES)
+                val noButton = ButtonType("No", ButtonBar.ButtonData.NO)
 
-            alert.buttonTypes.setAll(okButton, noButton)
+                alert.buttonTypes.setAll(okButton, noButton)
 
-            val result = alert.showAndWait()
-            if (result.get() == noButton) {
-               evt.consume()
+                val result = alert.showAndWait()
+                if (result.get() == noButton) {
+                    evt.consume()
+                }
+
+                // If yes is clicked, discconect from the Arduino 
+                else {
+                    if (!serialDeviceController.disconnect())
+                        evt.consume()
+                }
             }
         }
     }
