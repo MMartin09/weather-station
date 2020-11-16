@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="825a1899-e9b0-47aa-9d0a-576e55edcfc7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/views/dialogs/SensorDetailsDialog.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/controllers/MainController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/controllers/MainController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/Sensor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/Sensor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/ValueType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/models/ValueType.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/views/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/views/MainView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/views/dialogs/SensorDetailsDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/views/dialogs/SensorDetailsDialog.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,22 +118,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1604507743105" />
-    <state width="2517" height="311" key="GridCell.Tab.0.bottom" timestamp="1605295492764">
+    <state width="2517" height="373" key="GridCell.Tab.0.bottom" timestamp="1605524702289">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="311" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605295492764" />
-    <state width="2517" height="311" key="GridCell.Tab.0.center" timestamp="1605295492764">
+    <state width="2517" height="373" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605524702289" />
+    <state width="2517" height="373" key="GridCell.Tab.0.center" timestamp="1605524702289">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="311" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605295492764" />
-    <state width="2517" height="311" key="GridCell.Tab.0.left" timestamp="1605295492764">
+    <state width="2517" height="373" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605524702289" />
+    <state width="2517" height="373" key="GridCell.Tab.0.left" timestamp="1605524702289">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="311" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605295492764" />
-    <state width="2517" height="311" key="GridCell.Tab.0.right" timestamp="1605295492764">
+    <state width="2517" height="373" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605524702289" />
+    <state width="2517" height="373" key="GridCell.Tab.0.right" timestamp="1605524702289">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="311" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605295492764" />
+    <state width="2517" height="373" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605524702289" />
     <state x="643" y="371" key="SettingsEditor" timestamp="1605090702259">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -143,14 +146,14 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="986" y="433" width="589" height="534" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1604946359548" />
-    <state x="1124" y="472" key="refactoring.ChangeSignatureDialog" timestamp="1604860867235">
+    <state x="1124" y="472" key="refactoring.ChangeSignatureDialog" timestamp="1605524324453">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1124" y="472" key="refactoring.ChangeSignatureDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1604860867235" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1605120881651">
+    <state x="1124" y="472" key="refactoring.ChangeSignatureDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1605524324453" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1605524314657">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605120881651" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605524314657" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/weather_station$MainKt.ic" NAME="MainKt Coverage Results" MODIFIED="1605104550649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

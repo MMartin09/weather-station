@@ -12,6 +12,7 @@ import martinmoser.controllers.MessageController
 import martinmoser.controllers.SerialDeviceController
 import martinmoser.controllers.StatusController
 import martinmoser.models.Sensor
+import martinmoser.models.SensorModel
 import martinmoser.models.Status
 import martinmoser.views.dialogs.SensorDetailsDialog
 import tornadofx.*
@@ -41,7 +42,7 @@ class MainView: View() {
             val sensor1 = mainController.sensors[0]
             sensor1.updateValue((Random.nextFloat() * 50 - 25))
 
-            mainController.model.commit()
+            //mainController.model.commit()
             mainController.refresh()
 
             // -----------------------------------
@@ -49,7 +50,7 @@ class MainView: View() {
             val sensor2 = mainController.sensors[1]
             sensor2.updateValue((Random.nextFloat() * 50 - 25))
 
-            mainController.model.commit()
+            //mainController.model.commit()
             mainController.refresh()
 
             // -----------------------------------
@@ -57,7 +58,7 @@ class MainView: View() {
             val sensor3 = mainController.sensors[2]
             sensor3.updateValue((Random.nextFloat() * 50 - 25))
 
-            mainController.model.commit()
+            //mainController.model.commit()
             mainController.refresh()
         }
     }
@@ -123,9 +124,13 @@ class MainView: View() {
 
         left {
             listview<String>(mainController.sensorNames()) {
+                mainController.model.rebindOnChange(this) {
+                    selectedSensor -> item = mainController.getSensorByName(selectedSensor!!) ?: Sensor()
+                }
+
                 contextmenu {
                     item("Details").action {
-                        find<SensorDetailsDialog>().openModal(stageStyle = StageStyle.UTILITY)
+                        openInternalWindow<SensorDetailsDialog>()
                     }
                 }
 
@@ -147,9 +152,9 @@ class MainView: View() {
                     text = "${it.hour}:" + "%02d".format(it.minute) + ":%02d".format(it.second)
                 }
 
-                mainController.model.rebindOnChange(this) { selectedSensor -> item = selectedSensor ?: Sensor()
+                /*mainController.model.rebindOnChange(this) { selectedSensor -> item = selectedSensor ?: Sensor()
                     mainController.model.commit()
-                }
+                }*/
             }
         }
 

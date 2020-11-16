@@ -6,8 +6,8 @@ package martinmoser.models
  * @author MMartin09
  * @since 0.1.0
  */
-enum class ValueType {
-    INTEGER,
-    FLOAT,
-    BOOLEAN
+enum class ValueType(value: String) {
+    INTEGER("Integer"),
+    FLOAT("Float"),
+    BOOLEAN("Boolean")
 }

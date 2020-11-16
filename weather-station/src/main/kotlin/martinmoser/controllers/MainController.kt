@@ -42,10 +42,30 @@ class MainController: Controller() {
      * TODO: this function must be optimized and documented.
      */
     fun refresh() {
-        model.commit()
+        //model.commit()
 
         var x = sensors.toList()
         sensors.clear()
         sensors.addAll(x)
+    }
+
+    /**
+     * Get a SensorModel by the name of the seonsor.
+     *
+     * @author MMartin09
+     * @since 0.1.0
+     *
+     * @param name Name of the sensor
+     *
+     * @returns SensorModel of the target sensor.
+     */
+    fun getSensorByName(name: String): Sensor? {
+        sensors.forEach {
+            if (it.name == name) {
+                return it
+            }
+        }
+
+        return null
     }
 }
