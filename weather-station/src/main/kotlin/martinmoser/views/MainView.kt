@@ -124,10 +124,12 @@ class MainView: View() {
 
         left {
             listview<String>(mainController.sensorNames()) {
+                // If a new item is selected update the model to hold the new selected item.
                 mainController.model.rebindOnChange(this) {
                     selectedSensor -> item = mainController.getSensorByName(selectedSensor!!) ?: Sensor()
                 }
 
+                // Conextmenu fpr the sensors. Opens with a right click on a sensor name.
                 contextmenu {
                     item("Details").action {
                         openInternalWindow<SensorDetailsDialog>()
@@ -141,7 +143,6 @@ class MainView: View() {
         center {
             tableview<Sensor>(mainController.sensors) {
                 column("Sensor", Sensor::name)
-                column("Value Type", Sensor::value_type)
                 column("Unit", Sensor::unit)
 
                 column("Value", Sensor::value).cellFormat {
@@ -151,10 +152,6 @@ class MainView: View() {
                 column("Last updated", Sensor::last_updated).cellFormat {
                     text = "${it.hour}:" + "%02d".format(it.minute) + ":%02d".format(it.second)
                 }
-
-                /*mainController.model.rebindOnChange(this) { selectedSensor -> item = selectedSensor ?: Sensor()
-                    mainController.model.commit()
-                }*/
             }
         }
 
