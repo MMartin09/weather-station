@@ -58,6 +58,22 @@ It is possible to use another Java distributor or version.
 But it is not sure that the application or the libraries are (fully) compatible with the used Java. 
 It is also not recommended to use a older version. 
 
+.Adopt OpenJDK Installer
+[#img-adopt-openjdk-installer]
+image::AdoptOpenJDKInstaller.png[AdoptOpenJDKInstaller, 400, 200]
+
+It is strongly recommended to create the `JAVA_HOME` variable.
+This variable points to the JDK so that other programs, like Gradle, could access the JDK. 
+Adding could be done manually or using the installer. 
+To let the installer add it, it must be set to true in the custom setup step. 
+In <<#img-adopt-openjdk-installer>> the required point is highlited in blue. 
+If the symbol left to the text looks like this, the installer will set `JAVA_HOME`. 
+If there is a red cross (like the symbol below) it will not set it. 
+To enable it click on the symbol. 
+
+For the rest of the installation follow the wizard. 
+It is not required to change anything else. 
+
 === Arduino IDE
 
 NOTE: Used version at the time of writing Arduino SAMD Boards package = version 1.8.9 Arduino_MKRENV = version 1.1.0.

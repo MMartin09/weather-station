@@ -48,7 +48,3 @@ dependencies {
 javafx {
     modules("javafx.controls", "javafx.fxml")
 }
-
-application {
-    mainClassName = "MainKt"
-}
