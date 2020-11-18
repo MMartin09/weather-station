@@ -1,9 +1,6 @@
 package martinmoser.views.dialogs
 
-import javafx.scene.Parent
 import martinmoser.controllers.MainController
-import martinmoser.models.Sensor
-import martinmoser.models.SensorModel
 import tornadofx.*
 
 /**

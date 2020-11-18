@@ -1,6 +1,5 @@
 package martinmoser.controllers
 
-import com.fazecast.jSerialComm.SerialPort
 import martinmoser.SerialDevice
 import martinmoser.SerialDeviceManager
 import tornadofx.Controller

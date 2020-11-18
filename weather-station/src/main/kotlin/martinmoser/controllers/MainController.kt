@@ -1,8 +1,5 @@
 package martinmoser.controllers
 
-import javafx.beans.property.ListProperty
-import javafx.beans.property.SimpleObjectProperty
-import javafx.beans.property.SimpleStringProperty
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import kotlinx.serialization.decodeFromString
@@ -11,7 +8,6 @@ import martinmoser.models.Sensor
 import martinmoser.models.SensorList
 import martinmoser.models.SensorModel
 import tornadofx.Controller
-import tornadofx.toProperty
 import java.io.File
 
 /**
