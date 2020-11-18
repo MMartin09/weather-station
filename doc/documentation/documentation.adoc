@@ -19,7 +19,7 @@ Moser Martin
 
 **Arduino IDE**
 
-At the time this document was written, the Arduino IDE with version 1.8.13 was used. 
+At the time this document was written, the Arduino IDE with version 1.8.13 is used. 
 If another version is used, the IDE may looks not the same or possible some steps are not one by one reproducible. 
 But the IDE is in such a state that it does not change to much from version to version so it should not be a problem do follow along. 
 
@@ -64,7 +64,7 @@ image::AdoptOpenJDKInstaller.png[AdoptOpenJDKInstaller, 400, 200]
 
 It is strongly recommended to create the `JAVA_HOME` variable.
 This variable points to the JDK so that other programs, like Gradle, could access the JDK. 
-Adding could be done manually or using the installer. 
+Adding could be done manually or using the installer. S_n = X_1 + ... + X_n für n \ge 1 k
 To let the installer add it, it must be set to true in the custom setup step. 
 In <<#img-adopt-openjdk-installer>> the required point is highlited in blue. 
 If the symbol left to the text looks like this, the installer will set `JAVA_HOME`. 
@@ -132,12 +132,12 @@ class Sensor {
 
 The list of available sensors is initialized using a JSON file. 
 In this file all sensors and their required attributes are described. 
-So that the application is able to read the file correctly it must correspond exactly to the specified format. 
+In order to read and parse the file correctly it must correspond exactly to the specified format.
 
 The file contains an attribute called `sensors`.
 This is a list type and must contain all sensor definitions. 
 A sensor definition is enclosed by a pair of opening and closing braces `{ ... }`.
-Each definition requires a `name`, a `value_type` and a `unit`.
+Each definition requires an `id`, a `name`, a `value_type` and a `unit`.
 The ordering of these is important. 
 As value type any of the defined constants in the `ValueType` enum could be used. 
 
@@ -148,11 +148,13 @@ As value type any of the defined constants in the `ValueType` enum could be used
 {
   "sensors": [ <1>
     { <2>
+      "id": "f7a0d9cc-6f73-4090-9d1d-e8694f6c4c2c",
       "name": "Sensor 1",
       "value_type": "FLOAT",
       "unit": "°C"
     },
     {
+      "id": "35958ba9-7447-4756-9b6e-700521a80a88",
       "name": "Sensor 2",
       "value_type": "FLOAT",
       "unit": "°C"
@@ -166,6 +168,13 @@ As value type any of the defined constants in the `ValueType` enum could be used
 NOTE: Line breaks and spaces are reduntant. 
 All attributes of a sensor could also be in one line. 
 But for clearnesses it is recommended to use the same formating. 
+
+The `id` and the `name` are unique values. 
+In the application they are used to identify the right sensor. 
+
+WARNING: Currently there is no mechanism to check if there are no duplicate values. 
+It is the responsibility of the user to enter correct values.
+However, this is not intended to be permanent, only the current state of development.
 
 === Creation
 
@@ -201,6 +210,27 @@ SensorList "1" *-- "0..*" SensorType
 ....
 
 <<#sensor-mapping-classes>> shows the UML of the required classes for the mapping of the sensor list. 
+The `SensorList` class also contains a function to map all `SensorType` objects to `Sensor` objects. 
+As already mentioned for the library to parse the `String` into JSON it is required that the classes are serialzable. 
+To achive this the `@Serializable` annotation could be used. 
+
+[source, kotlin]
+----
+import kotlinx.serialization.Serializable <1>
+
+@Serializable <2>
+data class SensorType(
+  // ...
+)
+
+@Serializable
+class SensorList(
+  // ...
+) 
+{}
+----
+<1> Required import to use the annotation
+<2> Make the class serializable
 
 == Use - cases
 
