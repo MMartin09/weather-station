@@ -7,13 +7,13 @@
       "unit": "°C"
     },
     {
-      "id": "2",
+      "id": "35958ba9-7447-4756-9b6e-700521a80a88",
       "name": "Humidity Sensor",
       "value_type": "FLOAT",
       "unit": "%"
     },
     {
-      "id": "3",
+      "id": "74722156-26ef-4b5c-a308-461dbd473bc0",
       "name": "Ambient Sensor",
       "value_type": "FLOAT",
       "unit": "Lux"

@@ -80,6 +80,7 @@ class SerialDevice(port: SerialPort) {
 
                 if (sensor_index == null) {
                     // TODO show error that sensor id was not found!
+                    println("Could not find sensor with id: $id")
                     return
                 }
 
