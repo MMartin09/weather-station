@@ -11,6 +11,15 @@ import java.time.LocalDateTime
 
 val EPOCH = LocalDateTime.of(1970, 1, 1, 0, 0)
 
+/**
+ * Sensor class.
+ *
+ * Defines a sensor with required attributes.
+ * Each sensor has a unique id and name.
+ *
+ * @author MMartin09
+ * @since 0.1.0
+ */
 class Sensor(
         id: String? = null,
         name: String? = null,
@@ -51,6 +60,14 @@ class Sensor(
     }
 }
 
+/**
+ * ItemViewModel for the Sensor class.
+ *
+ * The model binds the required attributes from the sensor.
+ *
+ * @author MMartin09
+ * @since 0.1.0
+ */
 class SensorModel: ItemViewModel<Sensor>() {
     val id = bind(Sensor::idProperty)
     val name = bind(Sensor::nameProperty)
