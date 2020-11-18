@@ -3,6 +3,7 @@ package martinmoser
 import com.fazecast.jSerialComm.SerialPort
 import com.fazecast.jSerialComm.SerialPortDataListener
 import com.fazecast.jSerialComm.SerialPortEvent
+import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
 import martinmoser.controllers.StatusController
 import martinmoser.models.Status
@@ -21,6 +22,7 @@ import java.io.InputStreamReader
  * @since 0.1.0
  */
 class SerialDevice(port: SerialPort) {
+    private val mainController = find(MainController::class)
     private val messageController = find(MessageController::class)
     private val statusController = find(StatusController::class)
 
@@ -71,10 +73,20 @@ class SerialDevice(port: SerialPort) {
                 comPort.readBytes(newData, newData.size.toLong()) //read incoming bytes
                 val serialData = String(newData) //convert bytes to string
 
-                //serialData wordt verstuurd naar algoritme
-                //a.algoritme_serial(serialData)
-                //print string received from the Arduino
-                println(serialData)
+                val id = serialData.split("=")[0]
+                val value = serialData.split("=")[1].toFloat()
+
+                val sensor_index = mainController.getIndexById(id)
+
+                if (sensor_index == null) {
+                    // TODO show error that sensor id was not found!
+                    return
+                }
+
+                val sensor = mainController.sensors[sensor_index]
+                sensor.updateValue(value)
+
+                mainController.refresh()
             }
         })
 

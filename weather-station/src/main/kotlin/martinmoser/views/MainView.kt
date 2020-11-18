@@ -35,27 +35,27 @@ class MainView: View() {
 
         // schedule at a fixed rate
         timer.scheduleAtFixedRate(1000, 1000) {
-            val sensor1 = mainController.sensors[0]
+            /*val sensor1 = mainController.sensors[0]
             sensor1.updateValue((Random.nextFloat() * 50 - 25))
 
             //mainController.model.commit()
-            mainController.refresh()
+            mainController.refresh()*/
 
             // -----------------------------------
 
-            val sensor2 = mainController.sensors[1]
+            /*val sensor2 = mainController.sensors[1]
             sensor2.updateValue((Random.nextFloat() * 50 - 25))
 
             //mainController.model.commit()
-            mainController.refresh()
+            mainController.refresh()*/
 
             // -----------------------------------
 
-            val sensor3 = mainController.sensors[2]
+            /*val sensor3 = mainController.sensors[2]
             sensor3.updateValue((Random.nextFloat() * 50 - 25))
 
             //mainController.model.commit()
-            mainController.refresh()
+            mainController.refresh()*/
         }
     }
 

@@ -1,7 +1,7 @@
 {
   "sensors": [
     {
-      "id": "1",
+      "id": "f7a0d9cc-6f73-4090-9d1d-e8694f6c4c2c",
       "name": "Temperature Sensor",
       "value_type": "FLOAT",
       "unit": "°C"

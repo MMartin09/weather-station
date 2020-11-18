@@ -45,15 +45,26 @@ class MainController: Controller() {
         sensors.addAll(x)
     }
 
+    fun getIndexById(id: String): Int? {
+        var i = 0
+
+        sensors.forEach {
+            if (it.id == id) return i
+            i++
+        }
+
+        return null
+    }
+
     /**
-     * Get a SensorModel by the name of the seonsor.
+     * Get a Sensor by the name of the seonsor.
      *
      * @author MMartin09
      * @since 0.1.0
      *
      * @param name Name of the sensor
      *
-     * @returns SensorModel of the target sensor.
+     * @returns Sensor of the target sensor.
      */
     fun getSensorByName(name: String): Sensor? {
         sensors.forEach {
