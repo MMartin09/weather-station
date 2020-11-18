@@ -12,10 +12,14 @@ import java.time.LocalDateTime
 val EPOCH = LocalDateTime.of(1970, 1, 1, 0, 0)
 
 class Sensor(
+        id: String? = null,
         name: String? = null,
         value_type: ValueType? = null,
         unit: String? = null
 ) {
+    val idProperty = SimpleStringProperty(this, "id", id)
+    var id by idProperty
+
     val nameProperty = SimpleStringProperty(this, "name", name)
     var name by nameProperty
 
@@ -48,6 +52,7 @@ class Sensor(
 }
 
 class SensorModel: ItemViewModel<Sensor>() {
+    val id = bind(Sensor::idProperty)
     val name = bind(Sensor::nameProperty)
     val value_type = bind(Sensor::valueTypeProperty)
     val unit = bind(Sensor::unitProperty)

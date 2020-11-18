@@ -1,16 +1,19 @@
 {
   "sensors": [
     {
+      "id": "1",
       "name": "Temperature Sensor",
       "value_type": "FLOAT",
       "unit": "°C"
     },
     {
+      "id": "2",
       "name": "Humidity Sensor",
       "value_type": "FLOAT",
       "unit": "%"
     },
     {
+      "id": "3",
       "name": "Ambient Sensor",
       "value_type": "FLOAT",
       "unit": "Lux"

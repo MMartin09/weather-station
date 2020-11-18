@@ -20,6 +20,12 @@ class SensorDetailsDialog: View("Sensor detail dialog") {
     override val root = hbox {
         form {
             fieldset("Sensor details") {
+                field("ID") {
+                    textfield(mainController.model.id) {
+                        isEditable = false
+                    }
+                }
+
                 field("Name") {
                     textfield(mainController.model.name) {
                         isEditable = false
