@@ -19,7 +19,7 @@ data class SensorType(
 class SensorList(
     val sensors: List<SensorType>
 ) {
-    fun toAsi(): ArrayList<Sensor> {
+    fun toSensor(): ArrayList<Sensor> {
         val sensorList: ArrayList<Sensor> = arrayListOf()
 
         sensors.forEach {

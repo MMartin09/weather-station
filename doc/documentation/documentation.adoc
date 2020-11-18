@@ -72,7 +72,7 @@ If there is a red cross (like the symbol below) it will not set it.
 To enable it click on the symbol. 
 
 For the rest of the installation follow the wizard. 
-It is not required to change anything else. 
+It is not required to change anything else. SensorTypek
 
 === Arduino IDE
 
@@ -166,6 +166,41 @@ As value type any of the defined constants in the `ValueType` enum could be used
 NOTE: Line breaks and spaces are reduntant. 
 All attributes of a sensor could also be in one line. 
 But for clearnesses it is recommended to use the same formating. 
+
+=== Creation
+
+The creation of the sensors (sensor objects) requires a few steps. 
+At first the sensors file must be read. 
+Then this file must be parsed from `String` to a JSON object. 
+And last but not least the JSON object must be mapped to the sensors. 
+
+Parsing the `String` to JSON requires the knowledge of the *exact* scheme. 
+The library requires a serializable class for parsing. 
+In short the sensor list file could be described as a list of sensors. 
+Due to the `Properties` in the sensor class it is not serializable and a new class is required. 
+The new class is called `SensorType`. 
+The list of all `SensorType` is stored in a class called `SensorList`.
+
+.Sensor mapping classes
+[#sensor-mapping-classes]
+[plantuml, sensor-type, png]
+....
+class SensorType {
+  String id
+  String name
+  ValueType value_type
+  String unit
+}
+
+class SensorList {
+
+  ArrayList<Sensor> : toSensor()
+}
+
+SensorList "1" *-- "0..*" SensorType
+....
+
+<<#sensor-mapping-classes>> shows the UML of the required classes for the mapping of the sensor list. 
 
 == Use - cases
 

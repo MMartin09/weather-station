@@ -23,7 +23,7 @@ class MainController: Controller() {
     init {
         val sensor_file = File("sensors.json").readText().replace("\n", "")
         val data = Json.decodeFromString<SensorList>(sensor_file)
-        sensors.addAll(data.toAsi())
+        sensors.addAll(data.toSensor())
     }
 
     fun sensorNames(): ObservableList<String>? {
