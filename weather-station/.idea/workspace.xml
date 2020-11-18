@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="825a1899-e9b0-47aa-9d0a-576e55edcfc7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensors.json" beforeDir="false" afterPath="$PROJECT_DIR$/sensors.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/martinmoser/main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,22 +115,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1061" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1604507743105" />
-    <state width="2517" height="246" key="GridCell.Tab.0.bottom" timestamp="1605527461171">
+    <state width="2517" height="246" key="GridCell.Tab.0.bottom" timestamp="1605686820861">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="246" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605527461171" />
-    <state width="2517" height="246" key="GridCell.Tab.0.center" timestamp="1605527461171">
+    <state width="2517" height="246" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605686820861" />
+    <state width="2517" height="246" key="GridCell.Tab.0.center" timestamp="1605686820861">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="246" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605527461171" />
-    <state width="2517" height="246" key="GridCell.Tab.0.left" timestamp="1605527461170">
+    <state width="2517" height="246" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605686820861" />
+    <state width="2517" height="246" key="GridCell.Tab.0.left" timestamp="1605686820860">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="246" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605527461170" />
-    <state width="2517" height="246" key="GridCell.Tab.0.right" timestamp="1605527461171">
+    <state width="2517" height="246" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605686820860" />
+    <state width="2517" height="246" key="GridCell.Tab.0.right" timestamp="1605686820861">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="246" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605527461171" />
+    <state width="2517" height="246" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605686820861" />
     <state x="643" y="371" key="SettingsEditor" timestamp="1605090702259">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -146,10 +147,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1124" y="472" key="refactoring.ChangeSignatureDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1605524324453" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1605686605032">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1605686657043">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605686605032" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605686657043" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/weather_station$MainKt.ic" NAME="MainKt Coverage Results" MODIFIED="1605104550649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

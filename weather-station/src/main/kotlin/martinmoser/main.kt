@@ -18,7 +18,6 @@ data class SensorType(
 class SensorList(
     val sensors: List<SensorType>
 ) {
-
     fun toAsi(): ArrayList<Sensor> {
         val sensorList: ArrayList<Sensor> = arrayListOf()
 
