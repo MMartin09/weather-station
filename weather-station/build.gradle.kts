@@ -11,6 +11,10 @@ plugins {
 group = "at.martinmoser"
 version = "1.0-SNAPSHOT"
 
+tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "11"
+}
+
 repositories {
     mavenCentral()
     maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
@@ -31,10 +35,6 @@ repositories {
             includeModule("org.jetbrains", "markdown")
         }
     }
-}
-
-tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions.jvmTarget = "11"
 }
 
 dependencies {

@@ -14,7 +14,6 @@ import martinmoser.views.dialogs.SensorDetailsDialog
 import tornadofx.*
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
-import kotlin.random.Random
 
 
 /**
