@@ -4,17 +4,39 @@ import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.ButtonBar
 import javafx.scene.control.ButtonType
+import martinmoser.ValueFormatter
 import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
 import martinmoser.controllers.SerialDeviceController
 import martinmoser.controllers.StatusController
 import martinmoser.models.Sensor
 import martinmoser.models.Status
+import martinmoser.models.ValueType
 import martinmoser.views.dialogs.SensorDetailsDialog
 import tornadofx.*
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 
+
+/*class ValueFormatter() {
+    val mainController = find(MainController::class)
+
+    fun getFormated(index: Int): String {
+        val sensor = mainController.sensors[index]
+        print("Sensor $index is ${sensor.name} and has value type: ${sensor.value_type} and has a value of ")
+
+        if (sensor.value_type == ValueType.FLOAT) {
+            println("%.${2}f".format(sensor.value))
+            return "%.${2}f".format(sensor.value)
+        }
+        if (sensor.value_type == ValueType.INTEGER) {
+            println("%.${0}f".format(sensor.value))
+            return "%.${0}f".format(sensor.value)
+        }
+
+        return ""
+    }
+}*/
 
 /**
  * Main view of the application
@@ -27,6 +49,8 @@ class MainView: View() {
     private val serialDeviceController: SerialDeviceController by inject()
     private val messageController: MessageController by inject()
     private val statusController: StatusController by inject()
+
+    private val valueFormatter = ValueFormatter()
 
     init {
         // create a daemon thread
@@ -149,8 +173,8 @@ class MainView: View() {
                 column("Sensor", Sensor::name)
                 column("Unit", Sensor::unit)
 
-                column("Value", Sensor::value).cellFormat {
-                    text = "%.${2}f".format(it)
+                var tt = column("Value", Sensor::value).cellFormat {
+                    text = valueFormatter.getFormatted(this.index)
                 }
 
                 column("Last updated", Sensor::last_updated).cellFormat {

@@ -45,6 +45,16 @@ class MainController: Controller() {
         sensors.addAll(x)
     }
 
+    /**
+     * Get the sensor index by its id.
+     *
+     * @author MMartin09
+     * @since 0.1.0
+     *
+     * @param id Id of the sensor
+     *
+     * @returns Sensor index in the list
+     */
     fun getIndexById(id: String): Int? {
         var i = 0
 
@@ -74,5 +84,20 @@ class MainController: Controller() {
         }
 
         return null
+    }
+
+    /**
+     * Get a sensor by its index.
+     *
+     * @author MMartin09
+     * @since 0.1.0
+     *
+     * @param index Index of the sensor in the list
+     *
+     * @returns Sensor at index
+     */
+    fun getSensorByIndex(index: Int): Sensor? {
+        if (index >= sensors.size) return null
+        return sensors[index]
     }
 }

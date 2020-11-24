@@ -38,7 +38,7 @@ class Sensor(
     val unitProperty = SimpleStringProperty(this, "unit", unit)
     var unit by unitProperty
 
-    val valueProperty = SimpleFloatProperty(this, "value", 0F)
+    val valueProperty = SimpleFloatProperty(this, "value1", 0F)
     var value by valueProperty
 
     val lastUpdatedProperty = SimpleObjectProperty(this, "last_updated", EPOCH)

@@ -15,7 +15,7 @@
     {
       "id": "74722156-26ef-4b5c-a308-461dbd473bc0",
       "name": "Ambient Sensor",
-      "value_type": "FLOAT",
+      "value_type": "INTEGER",
       "unit": "Lux"
     }
   ]
