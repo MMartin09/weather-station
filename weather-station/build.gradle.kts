@@ -6,6 +6,7 @@ plugins {
     id("application")
     id("org.openjfx.javafxplugin") version "0.0.9"
     id("org.jetbrains.dokka") version "1.4.10.2"
+    id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
 }
 
 group = "at.martinmoser"
