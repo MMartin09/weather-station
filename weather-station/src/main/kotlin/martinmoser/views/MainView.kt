@@ -18,26 +18,6 @@ import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 
 
-/*class ValueFormatter() {
-    val mainController = find(MainController::class)
-
-    fun getFormated(index: Int): String {
-        val sensor = mainController.sensors[index]
-        print("Sensor $index is ${sensor.name} and has value type: ${sensor.value_type} and has a value of ")
-
-        if (sensor.value_type == ValueType.FLOAT) {
-            println("%.${2}f".format(sensor.value))
-            return "%.${2}f".format(sensor.value)
-        }
-        if (sensor.value_type == ValueType.INTEGER) {
-            println("%.${0}f".format(sensor.value))
-            return "%.${0}f".format(sensor.value)
-        }
-
-        return ""
-    }
-}*/
-
 /**
  * Main view of the application
  *
@@ -60,22 +40,6 @@ class MainView: View() {
         timer.scheduleAtFixedRate(1000, 1000) {
             /*val sensor1 = mainController.sensors[0]
             sensor1.updateValue((Random.nextFloat() * 50 - 25))
-
-            //mainController.model.commit()
-            mainController.refresh()*/
-
-            // -----------------------------------
-
-            /*val sensor2 = mainController.sensors[1]
-            sensor2.updateValue((Random.nextFloat() * 50 - 25))
-
-            //mainController.model.commit()
-            mainController.refresh()*/
-
-            // -----------------------------------
-
-            /*val sensor3 = mainController.sensors[2]
-            sensor3.updateValue((Random.nextFloat() * 50 - 25))
 
             //mainController.model.commit()
             mainController.refresh()*/
