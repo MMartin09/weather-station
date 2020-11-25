@@ -25,9 +25,9 @@ class PropertyController: Controller() {
     }
 
     fun get_decimal_places() {
-        val value = ini.get("config", "DecimalPlaces", Int::class.javaPrimitiveType)
+        val value = ini.get("Config", "DecimalPlaces", Int::class.javaPrimitiveType)
 
-        if (value != null) decimal_places(value)
+        if (value != 0) decimal_places(value)
         else decimal_places(2)
     }
 
