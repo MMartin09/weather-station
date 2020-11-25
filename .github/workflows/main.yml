@@ -23,7 +23,7 @@ jobs:
           java-version: 11
 
       - name: Make gradlew executable
-        run: chmod +x ./gradlew
+        run: chmod +x ./weather-station/gradlew
           
       - name: Analyze code formatting
         run: ./weather-station/gradlew ktlintCheck
