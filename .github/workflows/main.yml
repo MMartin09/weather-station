@@ -23,4 +23,4 @@ jobs:
           java-version: 11
           
       - name: Analyze code formatting
-        run: ./gradlew ktlintCheck
+        run: ./weather-station/gradlew ktlintCheck
