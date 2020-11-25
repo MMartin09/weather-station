@@ -2,9 +2,12 @@ package martinmoser.models
 
 import kotlinx.serialization.Serializable
 import martinmoser.views.MainView
+import mu.KotlinLogging
 import tornadofx.App
 import tornadofx.launch
 import java.util.*
+
+private val logger = KotlinLogging.logger {}
 
 @Serializable
 data class SensorType(
@@ -38,6 +41,7 @@ class SensorList(
  * @since 0.1.0
  */
 fun main(args: Array<String>) {
+    logger.warn("hello message")
     launch<MainApp>(args)
 }
 

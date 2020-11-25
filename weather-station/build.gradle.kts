@@ -43,6 +43,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     compile("com.fazecast:jSerialComm:[2.0.0,3.0.0)")
     compile("org.ini4j:ini4j:0.5.4")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.3")
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.4.10.2")
 }
 
