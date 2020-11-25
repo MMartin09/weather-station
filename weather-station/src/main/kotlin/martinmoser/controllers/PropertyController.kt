@@ -4,20 +4,33 @@ import org.ini4j.Wini
 import tornadofx.Controller
 import java.io.File
 
+
 /**
+ * @todo Add description.
+ *
  * @author MMartin09
  * @since 0.1.0
  */
 class PropertyController: Controller() {
+    lateinit var ini: Wini
+
+    private var decimal_places: Int = 0
 
     init {
         val config_file = File("config.properties")
 
-        val init = Wini(config_file)
+        ini = Wini(config_file)
 
-        val test = init.get("config", "DecimalPlaces", Int::class.javaPrimitiveType)
-        println("$test")
+        get_decimal_places()
     }
 
-    fun initialize() {}
+    fun get_decimal_places() {
+        val value = ini.get("config", "DecimalPlaces", Int::class.javaPrimitiveType)
+
+        if (value != null) decimal_places(value)
+        else decimal_places(2)
+    }
+
+    fun decimal_places(): Int = decimal_places
+    fun decimal_places(value: Int) {decimal_places = value}
 }

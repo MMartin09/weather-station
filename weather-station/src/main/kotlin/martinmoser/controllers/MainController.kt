@@ -22,15 +22,10 @@ class MainController: Controller() {
     val sensors = FXCollections.observableArrayList<Sensor>()
     var model = SensorModel()
 
-    // Initialize the property controller
-    val propertyController: PropertyController by inject()
-
     init {
         val sensor_file = File("sensors.json").readText().replace("\n", "")
         val data = Json.decodeFromString<SensorList>(sensor_file)
         sensors.addAll(data.toSensor())
-
-        propertyController.initialize()
     }
 
     fun sensorNames(): ObservableList<String>? {
