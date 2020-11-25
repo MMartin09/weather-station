@@ -44,6 +44,10 @@ dependencies {
     compile("com.fazecast:jSerialComm:[2.0.0,3.0.0)")
     compile("org.ini4j:ini4j:0.5.4")
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.4.10.2")
+
+    implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 }
 
 javafx {
