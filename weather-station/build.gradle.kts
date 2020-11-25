@@ -42,6 +42,7 @@ dependencies {
     implementation("javax.usb:usb-api:1.0.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     compile("com.fazecast:jSerialComm:[2.0.0,3.0.0)")
+    compile("org.ini4j:ini4j:0.5.4")
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.4.10.2")
 }
 

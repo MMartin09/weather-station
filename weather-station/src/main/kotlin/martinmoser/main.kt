@@ -6,7 +6,6 @@ import tornadofx.App
 import tornadofx.launch
 import java.util.*
 
-
 @Serializable
 data class SensorType(
     val id: String,
