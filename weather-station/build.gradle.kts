@@ -50,6 +50,9 @@ dependencies {
     compile("org.jetbrains.exposed", "exposed-core", "0.25.1")
     compile("org.jetbrains.exposed", "exposed-dao", "0.25.1")
     compile("org.jetbrains.exposed", "exposed-jdbc", "0.25.1")
+
+    compile("org.xerial:sqlite-jdbc:3.32.3.2")
+    compile("com.h2database:h2:1.4.199")
 }
 
 javafx {
