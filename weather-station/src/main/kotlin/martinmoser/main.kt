@@ -5,7 +5,6 @@ import martinmoser.views.MainView
 import tornadofx.App
 import tornadofx.launch
 
-
 @Serializable
 data class SensorType(
     val id: String,
