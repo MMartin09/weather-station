@@ -3,6 +3,7 @@ package martinmoser.views
 import javafx.beans.property.SimpleIntegerProperty
 import martinmoser.controllers.PropertyController
 import martinmoser.models.Sensor
+import martinmoser.models.Settings
 import tornadofx.ItemViewModel
 import tornadofx.*
 
@@ -14,8 +15,6 @@ import tornadofx.*
  */
 class SettingsView: View("Settings") {
     private val propertyController: PropertyController by inject()
-
-    data class Settings(val decimal_places: Int)
 
     private val model = object: ItemViewModel<Settings>() {
         val decimal_places = bind(Settings::decimal_places)
