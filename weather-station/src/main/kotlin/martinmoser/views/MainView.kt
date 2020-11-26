@@ -4,6 +4,7 @@ import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.ButtonBar
 import javafx.scene.control.ButtonType
+import javafx.stage.StageStyle
 import martinmoser.ValueFormatter
 import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
@@ -80,7 +81,7 @@ class MainView: View() {
             menubar {
                 menu("File") {
                     item("Settings").action {
-
+                        find<SettingsView>().openModal(stageStyle = StageStyle.UTILITY)
                     }
                 }
 
