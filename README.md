@@ -1,5 +1,9 @@
 # weather-station
 
+![Build](https://github.com/MMartin09/weather-station/workflows/Build/badge.svg)
+
+<img align="center" width="500" height="600" src="assets/main_window.PNG">
+
 ## Issues and feature requests
 
 Bug reports are welcome on the [issue-page](https://github.com/MMartin09/weather-station/issues).
