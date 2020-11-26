@@ -120,6 +120,26 @@ If the library is not used all of the functions must be implemented by hand.
 [#img-arduino-library-manager]
 image::ArduinoLibraryManager.png[ArduinoBoardManager,500,300]
 
+=== Make
+
+This is only required for Windows. 
+Linux system have `make` already pre-installed. 
+The program could simplify some workflow processes. 
+For example, building the documentation or starting the lint function. 
+It is not required to use `make` but it is highly recommended. 
+
+The easiest way in Windows is to use `Chocolatey`. 
+There are a few other ways how it could be installed but those are not explained here. 
+But Google provides enough links for this. 
+
+After `Chocolatey` is installed, a new terminal must be opened with administrator privileges. 
+If the terminal is opened with default rights the installation process asks if it could access administrator privilges. 
+But this fails sometimes. 
+So it is best to search for cmd, right-click it and select `Run as administrator`.
+
+Run `choco install make` to install the packet manager. 
+This is the only required command for the installation. 
+
 == Architecture
 
 === Sensor model
