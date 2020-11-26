@@ -23,6 +23,15 @@ At the time this document was written, the Arduino IDE with version 1.8.13 is us
 If another version is used, the IDE may looks not the same or possible some steps are not one by one reproducible. 
 But the IDE is in such a state that it does not change to much from version to version so it should not be a problem do follow along. 
 
+== Known problems
+
+**Decimal places**
+
+The number of decimal places could be changed in the `SettingsWindow`.
+But the displayed number of decimals does not change if the window is closed. 
+They will only change when the values are updated. 
+For example, if the connection is open and the Arduino sends the new values, these will be displayed with the new number of decimals. 
+
 == Libraries
 
 === Kotlinx Serialization 
