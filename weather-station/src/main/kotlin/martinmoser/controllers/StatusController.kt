@@ -1,10 +1,8 @@
 package martinmoser.controllers
 
 import javafx.beans.property.SimpleStringProperty
-import javafx.scene.control.MenuItem
 import martinmoser.models.Status
 import tornadofx.Controller
-import tornadofx.ViewModel
 
 /**
  * Controller for the connection status.
@@ -15,7 +13,7 @@ import tornadofx.ViewModel
  * @author MMartin09
  * @since 0.1.0
  */
-class StatusController: Controller() {
+class StatusController : Controller() {
     private var status: Status = Status.DISCONNECTED
     private val statusText = SimpleStringProperty("Status: ")
 

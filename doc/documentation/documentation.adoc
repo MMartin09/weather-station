@@ -23,6 +23,15 @@ At the time this document was written, the Arduino IDE with version 1.8.13 is us
 If another version is used, the IDE may looks not the same or possible some steps are not one by one reproducible. 
 But the IDE is in such a state that it does not change to much from version to version so it should not be a problem do follow along. 
 
+== Known problems
+
+**Decimal places**
+
+The number of decimal places could be changed in the `SettingsWindow`.
+But the displayed number of decimals does not change if the window is closed. 
+They will only change when the values are updated. 
+For example, if the connection is open and the Arduino sends the new values, these will be displayed with the new number of decimals. 
+
 == Libraries
 
 === Kotlinx Serialization 
@@ -115,17 +124,6 @@ image::ArduinoLibraryManager.png[ArduinoBoardManager,500,300]
 
 === Sensor model
 
-[plantuml, sensor-model, png]
-....
-class Sensor {
-  String name
-  String unit
-  ValueType value_type
-  Float value
-  LocalDateTime last_updated
-}
-....
-
 == Sensors
 
 === Sensorlist
@@ -176,7 +174,31 @@ WARNING: Currently there is no mechanism to check if there are no duplicate valu
 It is the responsibility of the user to enter correct values.
 However, this is not intended to be permanent, only the current state of development.
 
-=== Creation
+=== Configruation 
+
+The whole configuration of the application is stored in a file called `config.properties`.
+The file is a `ini` file and must follow some rules to be parsed correctly. 
+In general, the file is split into different `sections`.
+This is not required but makes the file more readable since it gives a bit more structure to it. 
+Each section contains key-value pairs. 
+
+**Sections**
+
+A section is led by a `[section]` header where `section` is replaced by the name of it. 
+The name of a section should be a string where the first character is upper case. 
+Special characters are not allowed in the name. 
+Spaces and points (.) are allowed but should be avoided as far as possible. 
+In the best case a section name is a simple string which only consists of letters.
+
+**Key - value pairs**
+
+Keys are strings consisting only letters. 
+They should be short and descriptive. 
+Special characters or spaces are not allowed. 
+Numbers should be avoided as far as possible. 
+A key-value pair must always has the format `key = value`.
+
+=== Sensor creation
 
 The creation of the sensors (sensor objects) requires a few steps. 
 At first the sensors file must be read. 
@@ -233,6 +255,10 @@ class SensorList(
 <2> Make the class serializable
 
 == Use - cases
+
+=== Loading application properties
+
+*Case 1:* Properties file could not be loaded
 
 === Closing the application
 

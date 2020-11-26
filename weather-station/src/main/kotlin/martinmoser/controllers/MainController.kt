@@ -16,7 +16,7 @@ import java.io.File
  * @author MMartin09
  * @since 0.1.0
  */
-class MainController: Controller() {
+class MainController : Controller() {
     val sensors = FXCollections.observableArrayList<Sensor>()
     var model = SensorModel()
 
@@ -29,7 +29,7 @@ class MainController: Controller() {
     fun sensorNames(): ObservableList<String>? {
         val x = FXCollections.observableArrayList<String>()
 
-        sensors.forEach{ x.add(it.name)}
+        sensors.forEach { x.add(it.name) }
 
         return x
     }
@@ -38,8 +38,6 @@ class MainController: Controller() {
      * TODO: this function must be optimized and documented.
      */
     fun refresh() {
-        //model.commit()
-
         var x = sensors.toList()
         sensors.clear()
         sensors.addAll(x)

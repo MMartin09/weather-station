@@ -20,7 +20,8 @@ repositories {
     mavenCentral()
     maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
-    maven(url="https://dl.bintray.com/kotlin/dokka")
+    maven(url = "https://dl.bintray.com/kotlin/dokka")
+    jcenter()
 
     exclusiveContent {
         forRepository {
@@ -43,7 +44,12 @@ dependencies {
     implementation("javax.usb:usb-api:1.0.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     compile("com.fazecast:jSerialComm:[2.0.0,3.0.0)")
+    compile("org.ini4j:ini4j:0.5.4")
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.4.10.2")
+
+    compile("org.jetbrains.exposed", "exposed-core", "0.25.1")
+    compile("org.jetbrains.exposed", "exposed-dao", "0.25.1")
+    compile("org.jetbrains.exposed", "exposed-jdbc", "0.25.1")
 }
 
 javafx {

@@ -4,6 +4,7 @@ import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
 import javafx.scene.control.ButtonBar
 import javafx.scene.control.ButtonType
+import javafx.stage.StageStyle
 import martinmoser.ValueFormatter
 import martinmoser.controllers.MainController
 import martinmoser.controllers.MessageController
@@ -11,12 +12,10 @@ import martinmoser.controllers.SerialDeviceController
 import martinmoser.controllers.StatusController
 import martinmoser.models.Sensor
 import martinmoser.models.Status
-import martinmoser.models.ValueType
 import martinmoser.views.dialogs.SensorDetailsDialog
 import tornadofx.*
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
-
 
 /**
  * Main view of the application
@@ -24,7 +23,7 @@ import kotlin.concurrent.scheduleAtFixedRate
  * @author MMartin09
  * @since 0.1.0
  */
-class MainView: View() {
+class MainView : View("Weather - Station") {
     private val mainController: MainController by inject()
     private val serialDeviceController: SerialDeviceController by inject()
     private val messageController: MessageController by inject()
@@ -34,7 +33,7 @@ class MainView: View() {
 
     init {
         // create a daemon thread
-        val timer = Timer("schedule", true);
+        val timer = Timer("schedule", true)
 
         // schedule at a fixed rate
         timer.scheduleAtFixedRate(1000, 1000) {
@@ -74,35 +73,28 @@ class MainView: View() {
         }
     }
 
-
-    override val root = borderpane  {
+    override val root = borderpane {
         top {
             menubar {
                 menu("File") {
-                    item("Item 1")
-                    item("Item 2")
+                    item("Settings").action {
+                        find<SettingsView>().openModal(stageStyle = StageStyle.UTILITY)
+                    }
                 }
 
                 menu("Edit") {
-                    item("Item 1")
-                    item("Item 2").action {
-
-                    }
-
                     item("Connect to Arduino", "Shortcut + C").action {
                         if (statusController.getStatus() == Status.CONNECTED) {
                             if (serialDeviceController.disconnect()) {
-                                this.items.forEach{
+                                this.items.forEach {
                                     if (it.text == "Disconnect from Arduino") {
                                         it.text = "Connect to Arduino"
                                     }
                                 }
                             }
-                        }
-
-                        else {
+                        } else {
                             if (serialDeviceController.connect()) {
-                                this.items.forEach{
+                                this.items.forEach {
                                     if (it.text == "Connect to Arduino") {
                                         it.text = "Disconnect from Arduino"
                                     }
@@ -117,8 +109,8 @@ class MainView: View() {
         left {
             listview<String>(mainController.sensorNames()) {
                 // If a new item is selected update the model to hold the new selected item.
-                mainController.model.rebindOnChange(this) {
-                    selectedSensor -> item = mainController.getSensorByName(selectedSensor!!) ?: Sensor()
+                mainController.model.rebindOnChange(this) { selectedSensor ->
+                    item = mainController.getSensorByName(selectedSensor!!) ?: Sensor()
                 }
 
                 // Conextmenu fpr the sensors. Opens with a right click on a sensor name.

@@ -11,7 +11,6 @@ import tornadofx.find
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-
 /**
  * General serial device.
  *
@@ -50,7 +49,7 @@ class SerialDevice(port: SerialPort) {
 
         comPort.openPort()
 
-        val input = BufferedReader(InputStreamReader(comPort.getInputStream()));
+        val input = BufferedReader(InputStreamReader(comPort.getInputStream()))
 
         while (!comPort.isOpen && tries < 3) {
             messageController.addMessage("Connection to Arduino failed!")
@@ -62,34 +61,36 @@ class SerialDevice(port: SerialPort) {
 
         if (!comPort.isOpen) return false
 
-        comPort.addDataListener(object : SerialPortDataListener {
-            override fun getListeningEvents(): Int {
-                return SerialPort.LISTENING_EVENT_DATA_AVAILABLE
-            }
-
-            override fun serialEvent(event: SerialPortEvent) {
-                if (event.eventType != SerialPort.LISTENING_EVENT_DATA_AVAILABLE) return  //wait until we receive data
-                val newData = ByteArray(comPort.bytesAvailable()) //receive incoming bytes
-                comPort.readBytes(newData, newData.size.toLong()) //read incoming bytes
-                val serialData = String(newData) //convert bytes to string
-
-                val id = serialData.split("=")[0]
-                val value = serialData.split("=")[1].toFloat()
-
-                val sensor_index = mainController.getIndexById(id)
-
-                if (sensor_index == null) {
-                    // TODO show error that sensor id was not found!
-                    println("Could not find sensor with id: $id")
-                    return
+        comPort.addDataListener(
+            object : SerialPortDataListener {
+                override fun getListeningEvents(): Int {
+                    return SerialPort.LISTENING_EVENT_DATA_AVAILABLE
                 }
 
-                val sensor = mainController.sensors[sensor_index]
-                sensor.updateValue(value)
+                override fun serialEvent(event: SerialPortEvent) {
+                    if (event.eventType != SerialPort.LISTENING_EVENT_DATA_AVAILABLE) return
+                    val newData = ByteArray(comPort.bytesAvailable())
+                    comPort.readBytes(newData, newData.size.toLong())
+                    val serialData = String(newData)
 
-                mainController.refresh()
+                    val id = serialData.split("=")[0]
+                    val value = serialData.split("=")[1].toFloat()
+
+                    val sensor_index = mainController.getIndexById(id)
+
+                    if (sensor_index == null) {
+                        // TODO show error that sensor id was not found!
+                        println("Could not find sensor with id: $id")
+                        return
+                    }
+
+                    val sensor = mainController.sensors[sensor_index]
+                    sensor.updateValue(value)
+
+                    mainController.refresh()
+                }
             }
-        })
+        )
 
         messageController.addMessage("Succesfull connected to the Arduino on port ${comPort.systemPortName}!")
         statusController.setStatus(Status.CONNECTED)
