@@ -15,37 +15,20 @@ import tornadofx.*
  */
 class SettingsView: View("Settings") {
     private val propertyController: PropertyController by inject()
-
-    private val model = object: ItemViewModel<Settings>() {
-        val decimal_places = bind(Settings::decimal_places)
-
-        override fun onCommit() {
-            item = Settings(decimal_places.value)
-        }
-    }
-
-    init {
-        model.decimal_places.setValue(propertyController.decimal_places())
-        model.commit()
-    }
-
+    
     override val root = form {
         hbox {
             fieldset {
                 vbox {
-                    field("Decimal places") { textfield(model.decimal_places) }
+                    field("Decimal places") { textfield(propertyController.model.decimal_places) }
                 }
 
                 buttonbar {
                     button("Save") {
-                        enableWhen(model.dirty)
+                        enableWhen(propertyController.model.dirty)
 
                         action {
-                            println("Model: ${model.isDirty(model.decimal_places)}")
-                            model.commit()
-                            println("Model: ${model.isDirty(model.decimal_places)}")
-                            println("- - - - - - - - - - - -")
-
+                            propertyController.commit_changes()
                         }
                     }
                 }

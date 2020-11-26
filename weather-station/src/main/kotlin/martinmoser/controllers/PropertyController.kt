@@ -3,6 +3,7 @@ package martinmoser.controllers
 import javafx.beans.property.SimpleFloatProperty
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
+import martinmoser.models.SettingsModel
 import org.ini4j.Wini
 import tornadofx.Controller
 import tornadofx.getValue
@@ -17,19 +18,18 @@ import java.io.File
  * @since 0.1.0
  */
 class PropertyController: Controller() {
-    lateinit var ini: Wini
-
-    //val decimalPlacesProperty = SimpleIntegerProperty(this, "decimal_places", 0)
-    //var decimal_places by decimalPlacesProperty
-
-    var decimal_places: Int = 0
+    val model = SettingsModel()
+    private lateinit var ini: Wini
 
     init {
         val config_file = File("config.properties")
 
         ini = Wini(config_file)
 
+        // Read settings values
         get_decimal_places()
+
+        model.commit()
     }
 
     fun get_decimal_places() {
@@ -39,6 +39,10 @@ class PropertyController: Controller() {
         else decimal_places(2)
     }
 
-    fun decimal_places(): Int = decimal_places
-    fun decimal_places(value: Int) {decimal_places = value}
+    fun commit_changes() {
+        model.commit()
+    }
+
+    fun decimal_places(): Int = model.decimal_places.getValue()
+    fun decimal_places(value: Int) {model.decimal_places.setValue(value)}
 }
