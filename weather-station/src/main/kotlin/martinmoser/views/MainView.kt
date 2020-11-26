@@ -79,16 +79,12 @@ class MainView: View() {
         top {
             menubar {
                 menu("File") {
-                    item("Item 1")
-                    item("Item 2")
+                    item("Settings").action {
+
+                    }
                 }
 
                 menu("Edit") {
-                    item("Item 1")
-                    item("Item 2").action {
-
-                    }
-
                     item("Connect to Arduino", "Shortcut + C").action {
                         if (statusController.getStatus() == Status.CONNECTED) {
                             if (serialDeviceController.disconnect()) {
