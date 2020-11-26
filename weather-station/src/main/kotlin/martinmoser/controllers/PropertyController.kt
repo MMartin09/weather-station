@@ -1,15 +1,9 @@
 package martinmoser.controllers
 
-import javafx.beans.property.SimpleFloatProperty
-import javafx.beans.property.SimpleIntegerProperty
-import javafx.beans.property.SimpleStringProperty
 import martinmoser.models.SettingsModel
 import org.ini4j.Wini
 import tornadofx.Controller
-import tornadofx.getValue
-import tornadofx.setValue
 import java.io.File
-
 
 /**
  * @todo Add description.
@@ -17,7 +11,7 @@ import java.io.File
  * @author MMartin09
  * @since 0.1.0
  */
-class PropertyController: Controller() {
+class PropertyController : Controller() {
     val model = SettingsModel()
     private lateinit var ini: Wini
 
@@ -44,5 +38,5 @@ class PropertyController: Controller() {
     }
 
     fun decimal_places(): Int = model.decimal_places.getValue()
-    fun decimal_places(value: Int) {model.decimal_places.setValue(value)}
+    fun decimal_places(value: Int) { model.decimal_places.setValue(value) }
 }

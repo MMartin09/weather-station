@@ -1,12 +1,11 @@
 package martinmoser.models
 
 import javafx.beans.property.SimpleFloatProperty
-import tornadofx.*
-import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleObjectProperty
 import javafx.beans.property.SimpleStringProperty
 import tornadofx.ItemViewModel
-import tornadofx.getProperty
+import tornadofx.getValue
+import tornadofx.setValue
 import java.time.LocalDateTime
 
 val EPOCH = LocalDateTime.of(1970, 1, 1, 0, 0)
@@ -21,10 +20,10 @@ val EPOCH = LocalDateTime.of(1970, 1, 1, 0, 0)
  * @since 0.1.0
  */
 class Sensor(
-        id: String? = null,
-        name: String? = null,
-        value_type: ValueType? = null,
-        unit: String? = null
+    id: String? = null,
+    name: String? = null,
+    value_type: ValueType? = null,
+    unit: String? = null
 ) {
     val idProperty = SimpleStringProperty(this, "id", id)
     var id by idProperty
@@ -68,7 +67,7 @@ class Sensor(
  * @author MMartin09
  * @since 0.1.0
  */
-class SensorModel: ItemViewModel<Sensor>() {
+class SensorModel : ItemViewModel<Sensor>() {
     val id = bind(Sensor::idProperty)
     val name = bind(Sensor::nameProperty)
     val value_type = bind(Sensor::valueTypeProperty)

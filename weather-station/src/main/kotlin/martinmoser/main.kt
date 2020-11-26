@@ -4,7 +4,6 @@ import kotlinx.serialization.Serializable
 import martinmoser.views.MainView
 import tornadofx.App
 import tornadofx.launch
-import java.util.*
 
 @Serializable
 data class SensorType(
@@ -41,4 +40,4 @@ fun main(args: Array<String>) {
     launch<MainApp>(args)
 }
 
-class MainApp: App(MainView::class)
+class MainApp : App(MainView::class)

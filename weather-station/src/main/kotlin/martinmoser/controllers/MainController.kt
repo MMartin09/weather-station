@@ -4,13 +4,11 @@ import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import tornadofx.Controller
-import java.io.File
-
-import martinmoser.controllers.PropertyController
 import martinmoser.models.Sensor
 import martinmoser.models.SensorList
 import martinmoser.models.SensorModel
+import tornadofx.Controller
+import java.io.File
 
 /**
  * Controller for the main view.
@@ -18,7 +16,7 @@ import martinmoser.models.SensorModel
  * @author MMartin09
  * @since 0.1.0
  */
-class MainController: Controller() {
+class MainController : Controller() {
     val sensors = FXCollections.observableArrayList<Sensor>()
     var model = SensorModel()
 
@@ -31,7 +29,7 @@ class MainController: Controller() {
     fun sensorNames(): ObservableList<String>? {
         val x = FXCollections.observableArrayList<String>()
 
-        sensors.forEach{ x.add(it.name)}
+        sensors.forEach { x.add(it.name) }
 
         return x
     }
@@ -40,8 +38,6 @@ class MainController: Controller() {
      * TODO: this function must be optimized and documented.
      */
     fun refresh() {
-        //model.commit()
-
         var x = sensors.toList()
         sensors.clear()
         sensors.addAll(x)

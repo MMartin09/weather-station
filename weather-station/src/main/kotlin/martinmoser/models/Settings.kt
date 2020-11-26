@@ -20,6 +20,6 @@ data class Settings(
  * @author MMartin09
  * @since 0.1.0
  */
-class SettingsModel: ItemViewModel<Settings>() {
+class SettingsModel : ItemViewModel<Settings>() {
     val decimal_places = bind(Settings::decimal_places)
 }

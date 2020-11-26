@@ -12,7 +12,7 @@ import tornadofx.Controller
  * @author MMartin09
  * @since 0.1.0
  */
-class SerialDeviceController: Controller() {
+class SerialDeviceController : Controller() {
     private var serialDevice: SerialDevice? = null
     private val serialDeviceManager = SerialDeviceManager()
 

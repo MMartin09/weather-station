@@ -4,14 +4,13 @@ import javafx.beans.property.SimpleStringProperty
 import tornadofx.Controller
 import java.time.LocalTime
 
-
 /**
  * Controller for the message window.
  *
  * @author MMartin09
  * @since 0.1.0
  */
-class MessageController: Controller() {
+class MessageController : Controller() {
     private val message = SimpleStringProperty("")
     private val messageArray = mutableListOf<String>()
 

@@ -13,7 +13,7 @@ import tornadofx.find
  */
 class ValueFormatter {
     private val mainController = find(MainController::class)
-    private val propertyController =  find(PropertyController::class)
+    private val propertyController = find(PropertyController::class)
 
     val decimal_places = propertyController.decimal_places()
 

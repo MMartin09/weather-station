@@ -14,7 +14,7 @@ import tornadofx.*
  * @author MMartin09
  * @since 0.1.0
  */
-class SensorDetailsDialog: View("Sensor detail dialog") {
+class SensorDetailsDialog : View("Sensor detail dialog") {
     private val mainController: MainController by inject()
 
     override val root = hbox {
