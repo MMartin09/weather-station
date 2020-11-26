@@ -26,4 +26,5 @@ jobs:
         run: chmod +x ./weather-station/gradlew
           
       - name: Analyze code formatting
-        run: ./weather-station/gradlew ktlintCheck
+        run: cd ./weather-station
+        run: ./gradlew ktlintCheck
