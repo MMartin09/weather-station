@@ -15,7 +15,7 @@ import tornadofx.*
  */
 class SettingsView: View("Settings") {
     private val propertyController: PropertyController by inject()
-    
+
     override val root = form {
         hbox {
             fieldset {
@@ -30,6 +30,10 @@ class SettingsView: View("Settings") {
                         action {
                             propertyController.commit_changes()
                         }
+                    }
+
+                    button("Close") .action{
+                        close()
                     }
                 }
             }

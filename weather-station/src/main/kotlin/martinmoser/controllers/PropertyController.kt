@@ -32,7 +32,7 @@ class PropertyController: Controller() {
         model.commit()
     }
 
-    fun get_decimal_places() {
+    private fun get_decimal_places() {
         val value = ini.get("Config", "DecimalPlaces", Int::class.javaPrimitiveType)
 
         if (value != 0) decimal_places(value)

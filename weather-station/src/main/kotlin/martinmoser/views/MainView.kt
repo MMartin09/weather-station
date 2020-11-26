@@ -25,7 +25,7 @@ import kotlin.concurrent.scheduleAtFixedRate
  * @author MMartin09
  * @since 0.1.0
  */
-class MainView: View() {
+class MainView: View("Weather - Station") {
     private val mainController: MainController by inject()
     private val serialDeviceController: SerialDeviceController by inject()
     private val messageController: MessageController by inject()

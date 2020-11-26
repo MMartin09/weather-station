@@ -12,7 +12,7 @@ import tornadofx.find
  * @since 0.1.0
  */
 class ValueFormatter {
-    val mainController = find(MainController::class)
+    private val mainController = find(MainController::class)
     private val propertyController =  find(PropertyController::class)
 
     val decimal_places = propertyController.decimal_places()
@@ -50,7 +50,7 @@ class ValueFormatter {
      * @returns The formatted value as string.
      */
     private fun formatFloat(value: Float): String {
-        return "%.${decimal_places}f".format(value)
+        return "%.${propertyController.decimal_places()}f".format(value)
     }
 
     /**
