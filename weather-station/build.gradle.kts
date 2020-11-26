@@ -20,6 +20,7 @@ repositories {
     maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
     maven(url="https://dl.bintray.com/kotlin/dokka")
+    jcenter()
 
     exclusiveContent {
         forRepository {
@@ -45,9 +46,9 @@ dependencies {
     compile("org.ini4j:ini4j:0.5.4")
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.4.10.2")
 
-    implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
+    compile("org.jetbrains.exposed", "exposed-core", "0.25.1")
+    compile("org.jetbrains.exposed", "exposed-dao", "0.25.1")
+    compile("org.jetbrains.exposed", "exposed-jdbc", "0.25.1")
 }
 
 javafx {
