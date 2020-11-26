@@ -75,7 +75,6 @@ class MainView: View() {
         }
     }
 
-
     override val root = borderpane  {
         top {
             menubar {
