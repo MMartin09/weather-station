@@ -4,9 +4,9 @@ name: Build
 
 on:
   push:
-    branches: [ development, klint ]
-  pull_request:
     branches: [ development ]
+  pull_request:
+    branches: [ development, klint ]
 
   workflow_dispatch:
 
