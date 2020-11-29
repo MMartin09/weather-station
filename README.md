@@ -20,7 +20,7 @@ Community contributions are a welcome addition to the project.
 In order to be merged any additions need to be correctly formatted. 
 Before introducing any major features or changes to the application please consider opening an [issue](https://github.com/MMartin09/weather-station/issues) to outline your proposal. 
 
-The project uses [ktlint-gradle](https://github.com/JLLeitschuh/ktlint-gradle) which is based on (ktlint)[https://github.com/pinterest/ktlint].
+The project uses [ktlint-gradle](https://github.com/JLLeitschuh/ktlint-gradle) which is based on [ktlint](https://github.com/pinterest/ktlint).
 Before opening a PR make sure that the linter passes. 
 Use `./gradlew ktlintCheck` or `make ktlint` to run the linter.  
 By opening a PR, the continuous integration tests get started. 
