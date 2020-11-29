@@ -46,7 +46,7 @@ object Sensors : Table() {
  * @since 0.1.0
  */
 fun main(args: Array<String>) {
-    Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver", user = "root", password = "")
+    /*Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver", user = "root", password = "")
 
     transaction {
         addLogger(StdOutSqlLogger)
@@ -65,7 +65,7 @@ fun main(args: Array<String>) {
             println("${sensor[Sensors.id]}: ${sensor[Sensors.name]}")
         }
 
-    }
+    }*/
 
     launch<MainApp>(args)
 }

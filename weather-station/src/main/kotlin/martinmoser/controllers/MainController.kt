@@ -20,10 +20,18 @@ class MainController : Controller() {
     val sensors = FXCollections.observableArrayList<Sensor>()
     var model = SensorModel()
 
+    val dbController: DatabaseController by inject()
+
     init {
         val sensor_file = File("sensors.json").readText().replace("\n", "")
         val data = Json.decodeFromString<SensorList>(sensor_file)
         sensors.addAll(data.toSensor())
+
+        if (dbController.connect()) {
+            println("Connected to the database!")
+        } else {
+            println("Could not connect to the database!")
+        }
     }
 
     fun sensorNames(): ObservableList<String>? {
