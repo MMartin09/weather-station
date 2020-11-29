@@ -30,13 +30,6 @@ class SensorList(
     }
 }
 
-object Sensors : Table() {
-    val id = integer("id").autoIncrement()
-    val name = varchar("name", 50)
-
-    override val primaryKey = PrimaryKey(id, name = "PK_Sensors_ID")
-}
-
 /**
  * Main function.
  *

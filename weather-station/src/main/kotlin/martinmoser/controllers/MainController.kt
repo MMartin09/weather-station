@@ -1,5 +1,6 @@
 package martinmoser.controllers
 
+import javafx.application.Platform
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import kotlinx.serialization.decodeFromString
@@ -29,8 +30,14 @@ class MainController : Controller() {
 
         if (dbController.connect()) {
             println("Connected to the database!")
+
+            dbController.create_schema()
+            if (sensors != null) dbController.add_sensors(sensorNames()!!)
         } else {
             println("Could not connect to the database!")
+
+            Platform.exit()
+            System.exit(1)
         }
     }
 
