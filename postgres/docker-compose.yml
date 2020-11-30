@@ -1,8 +1,0 @@
-version: "3.1"
-services:
-  postgresql:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    ports: 
-      - "5432:5432"
