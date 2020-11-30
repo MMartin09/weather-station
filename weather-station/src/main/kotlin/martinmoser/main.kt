@@ -2,8 +2,6 @@ package martinmoser.models
 
 import kotlinx.serialization.Serializable
 import martinmoser.views.MainView
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.transaction
 import tornadofx.App
 import tornadofx.launch
 
