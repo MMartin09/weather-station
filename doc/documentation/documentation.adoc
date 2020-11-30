@@ -23,7 +23,7 @@ At the time this document was written, the Arduino IDE with version 1.8.13 is us
 If another version is used, the IDE may looks not the same or possible some steps are not one by one reproducible. 
 But the IDE is in such a state that it does not change to much from version to version so it should not be a problem do follow along. 
 
-== Known problems
+== Known problems and limitations
 
 **Decimal places**
 
@@ -58,7 +58,7 @@ For example, if the connection is open and the Arduino sends the new values, the
 
 === Java 
 
-The project uses the OpenJDK from Adopt. 
+The project uses the OpenJDK from https://adoptopenjdk.net/[Adopt]. 
 Currently version 11 (LTS) is used. 
 The JDK for each Operating System could be downloaded https://adoptopenjdk.net/releases.html[here].
 
@@ -89,7 +89,7 @@ NOTE: Used version at the time of writing Arduino SAMD Boards package = version 
 
 **MKR board**
 
-To be able to program the Arduino using the official Arduino IDE, the board has to be installed first. 
+To be able to program the Arduino using the official https://www.arduino.cc/en/software[Arduino IDE], the board has to be installed first. 
 This could be done with the integrated board manager. 
 Select 'Tools' -> 'Board' -> 'Boards Manager...''. 
 This will open up a new window which provide functionality to add, update or remove boards. 
@@ -139,6 +139,32 @@ So it is best to search for cmd, right-click it and select `Run as administrator
 
 Run `choco install make` to install the packet manager. 
 This is the only required command for the installation. 
+
+=== Database
+
+**Docker**
+
+The project directory provides a `Dockerfile` to setup the database in a `container`.
+The file is located in the directory called `postgres`.
+It is highly recommended to use this solution over a real installation. 
+To run the database in the container Docker must be installed.
+
+The image provides two services. 
+A https://www.postgresql.org/[PostgreSQL] database and an https://www.adminer.org/de/[Adminer] container. 
+Adminer could be used to manage the database. 
+
+NOTE: The `Dockerfile` contains some pre-defined values, like the username or the password of the administrator. 
+But it is possible to adapt the file as wanted. 
+
+To start the container run: 
+
+[source, bash]
+----
+docker-compose -f stack.yml up
+----
+
+The command must be executed in the same directory where the `stack.yml` file is. 
+Otherwise the file path must be added before the filename. 
 
 == Architecture
 
@@ -194,7 +220,7 @@ WARNING: Currently there is no mechanism to check if there are no duplicate valu
 It is the responsibility of the user to enter correct values.
 However, this is not intended to be permanent, only the current state of development.
 
-=== Configruation 
+=== Configuration 
 
 The whole configuration of the application is stored in a file called `config.properties`.
 The file is a `ini` file and must follow some rules to be parsed correctly. 
@@ -422,3 +448,28 @@ Use: `asciidoctor-pdf -r asciidoctor-diagram documentation.adoc`
 **Install rouge**
 
 `gem install rouge`
+
+== Links
+
+This section lists the important links. 
+Most of them are anywhere in the code as hyperlinks. 
+For example, the link to the homepage is normally a hyperlink in the name. 
+
+If you find a link that is not working (anymore), please consider opening a new issue on the https://github.com/MMartin09/weather-station/issues[issue-site] of the project. 
+
+**Adminer**
+
+Homepage: https://www.adminer.org/de/
+
+**AdoptOpenJDK**
+
+Homepage: https://adoptopenjdk.net/
+Releases: https://adoptopenjdk.net/releases.html
+
+**Arduino IDE**
+
+Homepage: https://www.arduino.cc/en/software
+
+**PostgreSQL**
+
+Homepage: https://www.postgresql.org/

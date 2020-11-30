@@ -51,8 +51,11 @@ dependencies {
     compile("org.jetbrains.exposed", "exposed-dao", "0.25.1")
     compile("org.jetbrains.exposed", "exposed-jdbc", "0.25.1")
 
-    compile("org.xerial:sqlite-jdbc:3.32.3.2")
+    // H2
     compile("com.h2database:h2:1.4.199")
+
+    // PostgreSQL
+    compile("org.postgresql:postgresql:42.2.2")
 }
 
 javafx {
