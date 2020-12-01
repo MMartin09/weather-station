@@ -22,7 +22,15 @@ object SensorValues : Table() {
 }
 
 class DatabaseController : Controller() {
+    private val propertyController: PropertyController by inject()
+
     private var db: Database? = null
+
+    private val host = "127.0.0.1"
+    private val port = 5432
+    private val database = "weather_station"
+    private val username = "root"
+    private val password = "passwd"
 
     /**
      * Connect to the database.
@@ -32,10 +40,10 @@ class DatabaseController : Controller() {
      */
     fun connect(): Boolean {
         db = Database.connect(
-            url = "jdbc:postgresql://127.0.0.1:5432/weather_station",
+            url = "jdbc:postgresql://$host:$port/$database",
             driver = "org.postgresql.Driver",
-            user = "root",
-            password = "passwd"
+            user = username,
+            password = password
         )
 
         if (db == null) return false
