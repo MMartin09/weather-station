@@ -4,6 +4,7 @@ import javafx.collections.ObservableList
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import tornadofx.Controller
+import kotlin.random.Random.Default.nextFloat
 
 object Sensors : Table() {
     val id = integer("id").autoIncrement()
@@ -86,7 +87,12 @@ class DatabaseController : Controller() {
             val id = Sensors.select { Sensors.name eq name}.map {
                 it[Sensors.id]
             }[0]
-            
+
+            SensorValues.insert {
+                it[sensorId] = id
+                it[value] = nextFloat()
+            }
+
             println("$name id = $id")
         }
     }
