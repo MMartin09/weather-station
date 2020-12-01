@@ -52,16 +52,22 @@ class DatabaseController : Controller() {
 
     fun add_sensors(sensors: ObservableList<String>) {
         transaction {
-            sensors.forEach {
-                val sens_name = it
+            val existing_sensors = Sensors.selectAll().toList()
+
+            sensors.forEach loop@{
+                val sensor_name = it
+
+                val count = Sensors.select { Sensors.name eq sensor_name}.count()
+
+                if (count > 0) return@loop
 
                 Sensors.insert {
-                    it[name] = sens_name
+                    it[name] = sensor_name
                 }
+            }
 
-                for (sensor in Sensors.selectAll()) {
-                    println("${sensor[Sensors.id]}: ${sensor[Sensors.name]}")
-                }
+            for (sensor in Sensors.selectAll()) {
+                println("${sensor[Sensors.id]}: ${sensor[Sensors.name]}")
             }
         }
     }
