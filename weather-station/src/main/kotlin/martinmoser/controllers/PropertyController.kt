@@ -27,6 +27,11 @@ class PropertyController : Controller() {
 
         // Read settings values
         get_decimal_places()
+        get_database_host()
+        get_database_port()
+        get_database_name()
+        get_database_username()
+        get_database_password()
 
         model.commit()
     }
@@ -39,35 +44,35 @@ class PropertyController : Controller() {
     }
 
     private fun get_database_host() {
-        val value = ini.get(databaseSection, "Host", String::class.javaPrimitiveType)
+        val value = ini.get(databaseSection, "Host")
 
         if (value != null) database_host(value)
         else database_host("")
     }
 
     private fun get_database_port() {
-        val value = ini.get(databaseSection, "Port", String::class.javaPrimitiveType)
+        val value = ini.get(databaseSection, "Port")
 
         if (value != null) database_port(value)
         else database_port("")
     }
 
     private fun get_database_name() {
-        val value = ini.get(databaseSection, "Database", String::class.javaPrimitiveType)
+        val value = ini.get(databaseSection, "Database")
 
         if (value != null) database_name(value)
         else database_name("")
     }
 
     private fun get_database_username() {
-        val value = ini.get(databaseSection, "Username", String::class.javaPrimitiveType)
+        val value = ini.get(databaseSection, "Username")
 
         if (value != null) database_username(value)
         else database_username("")
     }
 
     private fun get_database_password() {
-        val value = ini.get(databaseSection, "Password", String::class.javaPrimitiveType)
+        val value = ini.get(databaseSection, "Password")
 
         if (value != null) database_password(value)
         else database_password("")

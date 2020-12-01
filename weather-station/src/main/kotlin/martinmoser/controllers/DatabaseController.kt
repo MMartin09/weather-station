@@ -26,13 +26,18 @@ class DatabaseController : Controller() {
 
     private var db: Database? = null
 
-    private lateinit var host: String
-    private lateinit var port: String
-    private lateinit var database: String
-    private lateinit var username: String
-    private lateinit var password: String
+    private val host: String
+    private val port: String
+    private val database: String
+    private val username: String
+    private val password: String
 
     init {
+        host = propertyController.database_host()
+        port = propertyController.database_port()
+        database = propertyController.database_name()
+        username = propertyController.database_username()
+        password = propertyController.database_password()
     }
 
     /**
