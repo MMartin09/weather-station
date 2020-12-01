@@ -12,6 +12,14 @@ object Sensors : Table() {
     override val primaryKey = PrimaryKey(id, name = "PK_Sensors_ID")
 }
 
+object SensorValues : Table() {
+    val id = integer("id").autoIncrement()
+    val sensorId = (integer("sensor_id") references Sensors.id).nullable()
+    val value = float("value")
+
+    override val primaryKey = PrimaryKey(SensorValues.id, name = "PK_Sensor_Values_ID")
+}
+
 class DatabaseController : Controller() {
     private var db: Database? = null
 
@@ -44,7 +52,9 @@ class DatabaseController : Controller() {
     fun create_schema() {
         transaction {
             addLogger(StdOutSqlLogger)
+
             SchemaUtils.create(Sensors)
+            SchemaUtils.create(SensorValues)
         }
     }
 
@@ -67,6 +77,17 @@ class DatabaseController : Controller() {
             for (sensor in Sensors.selectAll()) {
                 println("${sensor[Sensors.id]}: ${sensor[Sensors.name]}")
             }
+        }
+    }
+
+    fun test(name: String) {
+        println("Test")
+        transaction {
+            val id = Sensors.select { Sensors.name eq name}.map {
+                it[Sensors.id]
+            }[0]
+            
+            println("$name id = $id")
         }
     }
 }
