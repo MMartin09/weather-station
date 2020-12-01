@@ -22,13 +22,11 @@ class DatabaseController : Controller() {
      * @since 0.1.0
      */
     fun connect(): Boolean {
-        //db = Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver", user = "root", password = "")
-
         db = Database.connect(
-                url="jdbc:postgresql://127.0.0.1:5432/weather_station",
-                driver="org.postgresql.Driver",
-                user="root",
-                password="passwd"
+            url = "jdbc:postgresql://127.0.0.1:5432/weather_station",
+            driver = "org.postgresql.Driver",
+            user = "root",
+            password = "passwd"
         )
 
         if (db == null) return false
@@ -46,7 +44,7 @@ class DatabaseController : Controller() {
     fun create_schema() {
         transaction {
             addLogger(StdOutSqlLogger)
-            SchemaUtils.create (Sensors)
+            SchemaUtils.create(Sensors)
         }
     }
 
@@ -57,7 +55,7 @@ class DatabaseController : Controller() {
             sensors.forEach loop@{
                 val sensor_name = it
 
-                val count = Sensors.select { Sensors.name eq sensor_name}.count()
+                val count = Sensors.select { Sensors.name eq sensor_name }.count()
 
                 if (count > 0) return@loop
 

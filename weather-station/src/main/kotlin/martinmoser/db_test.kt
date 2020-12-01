@@ -10,6 +10,6 @@ fun main(args: Array<String>) {
         println("Connected to the database!")
 
         dbController.create_schema()
-    }
-    else println("Could not connect to the database!")
+    } else
+        println("Could not connect to the database!")
 }
