@@ -26,11 +26,14 @@ class DatabaseController : Controller() {
 
     private var db: Database? = null
 
-    private val host = "127.0.0.1"
-    private val port = 5432
-    private val database = "weather_station"
-    private val username = "root"
-    private val password = "passwd"
+    private lateinit var host: String
+    private lateinit var port: String
+    private lateinit var database: String
+    private lateinit var username: String
+    private lateinit var password: String
+
+    init {
+    }
 
     /**
      * Connect to the database.
