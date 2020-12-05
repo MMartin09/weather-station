@@ -37,28 +37,13 @@ class SensorList(
  * @since 0.1.0
  */
 fun main(args: Array<String>) {
-    /*Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver", user = "root", password = "")
-
-    transaction {
-        addLogger(StdOutSqlLogger)
-
-        SchemaUtils.create(Sensors)
-
-        val id = Sensors.insert {
-            it[name] = "Temp Sensor"
-        } get Sensors.id
-
-        val iid = Sensors.insert {
-            it[name] = "Hum Sensor"
-        } get Sensors.id
-
-        for (sensor in Sensors.selectAll()) {
-            println("${sensor[Sensors.id]}: ${sensor[Sensors.name]}")
-        }
-
-    }*/
-
     launch<MainApp>(args)
 }
 
+/**
+ * Main application for TornadoFx
+ *
+ * @author MMartin09
+ * @since 0.1.0
+ */
 class MainApp : App(MainView::class)
