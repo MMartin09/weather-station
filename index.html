@@ -83,8 +83,15 @@
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
       
-        <div class="md-header-nav__ellipsis md-ellipsis">
-          Weather - station
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Weather - station
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Home
+            
+          </span>
         </div>
       
     </div>
@@ -154,6 +161,27 @@
       
       
 
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="." class="md-nav__link md-nav__link--active">
+      Home
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
 
   <li class="md-nav__item">
     <a href="about/" class="md-nav__link">
@@ -179,28 +207,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#issues-and-feature-requests" class="md-nav__link">
-    Issues and feature requests
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributions" class="md-nav__link">
-    Contributions
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -213,22 +219,6 @@
                 
                 
                 <h1 id="weather-station">Weather - station</h1>
-<h2 id="issues-and-feature-requests">Issues and feature requests</h2>
-<p>Bug reports are welcome on the <a href="https://github.com/MMartin09/weather-station/issues">issue-page</a>.
-Please make sure to include the steps which lead to the incorrect beahviour. 
-If available add the generated crash report or error message. 
-Before opening a new issue make sure that there isn't already an open issue with the same problem. </p>
-<p>Feature requests are also welcome. 
-But consider checking out if these requests are already <a href="https://github.com/MMartin09/weather-station/issues">in work</a> to avoid duplication</p>
-<h2 id="contributions">Contributions</h2>
-<p>Community contributions are a welcome addition to the project. 
-In order to be merged any additions need to be correctly formatted. 
-Before introducing any major features or changes to the application please consider opening an <a href="https://github.com/MMartin09/weather-station/issues">issue</a> to outline your proposal. </p>
-<p>The project uses <a href="https://github.com/JLLeitschuh/ktlint-gradle">ktlint-gradle</a> which is based on <a href="https://github.com/pinterest/ktlint">ktlint</a>.
-Before opening a PR make sure that the linter passes. 
-Use <code>./gradlew ktlintCheck</code> or <code>make ktlint</code> to run the linter.<br />
-By opening a PR, the continuous integration tests get started. 
-These tests include <code>ktlint</code>as well. </p>
                 
               
               
@@ -243,6 +233,27 @@ These tests include <code>ktlint</code>as well. </p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="about/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                About
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
