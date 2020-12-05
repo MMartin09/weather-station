@@ -1,0 +1,10 @@
+site_name: Weather - station
+site_author: MMartin09
+copyright: Copyright © 2020 - 2020 Moser Martin
+
+pages:
+  - Home: "index.md"
+  - About: "about.md"
+
+theme:
+  name: material
