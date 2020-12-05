@@ -473,3 +473,8 @@ Homepage: https://www.arduino.cc/en/software
 **PostgreSQL**
 
 Homepage: https://www.postgresql.org/
+
+== Build and deploy the website
+
+First build the site with `mkdocs build`. 
+Then deploy it with `mkdocs gh-deploy`
