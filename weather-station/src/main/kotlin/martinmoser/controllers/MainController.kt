@@ -33,7 +33,7 @@ class MainController : Controller() {
 
             if (sensors != null) dbController.add_sensors(sensorNames()!!)
 
-            //dbController.test("Temperature Sensor")
+            dbController.test("Temperature Sensor")
         } else {
             println("Could not connect to the database!")
 

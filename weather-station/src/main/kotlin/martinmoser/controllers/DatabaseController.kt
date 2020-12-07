@@ -54,6 +54,11 @@ class DatabaseController : Controller() {
      *
      * @author MMartin09
      * @since 0.1.0
+     *
+     * Try to connect to the database.
+     * If the connection fails a error dialog is displayed.
+     *
+     * @returns True if the connection was successful. False otherwise.
      */
     fun connect(): Boolean {
         db = Database.connect(
@@ -99,13 +104,11 @@ class DatabaseController : Controller() {
                 }
             }
 
-
             alert.title = "Database error"
             alert.headerText = header
             alert.contentText = message
 
             val okButton = ButtonType("Exit", ButtonBar.ButtonData.APPLY)
-            alert.buttonTypes.setAll(okButton)
 
             alert.showAndWait()
 
