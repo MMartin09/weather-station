@@ -1,9 +1,18 @@
 package martinmoser.controllers
 
 import javafx.collections.ObservableList
+import javafx.scene.control.Alert
+import javafx.scene.control.ButtonBar
+import javafx.scene.control.ButtonType
+import org.jetbrains.exposed.exceptions.ExposedSQLException
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.postgresql.util.PSQLException
 import tornadofx.Controller
+import java.net.ConnectException
+import java.sql.BatchUpdateException
+import java.sql.SQLException
+import java.sql.SQLIntegrityConstraintViolationException
 import kotlin.random.Random.Default.nextFloat
 
 object Sensors : Table() {
@@ -48,13 +57,61 @@ class DatabaseController : Controller() {
      */
     fun connect(): Boolean {
         db = Database.connect(
-            url = "jdbc:postgresql://$host:$port/$database",
-            driver = "org.postgresql.Driver",
-            user = username,
-            password = password
+                url = "jdbc:postgresql://$host:$port/$database",
+                driver = "org.postgresql.Driver",
+                user = username,
+                password = password
         )
 
-        if (db == null) return false
+        try {
+            transaction {
+                Sensors.select { Sensors.name eq "sensor_name" }.count()
+            }
+        } catch (e: Exception) {
+            val alert = Alert(Alert.AlertType.ERROR)
+
+            var header: String = ""
+            var message: String = ""
+
+            println("Cause: ${e.cause.toString()}")
+
+            // Database is not running!
+            if (e.cause is ConnectException) {
+                header = "Connection refused"
+                message = "Connection to the host at $host:$port was refused!"
+                println(e.message)
+            }
+
+            else  {
+                header = "An error occured during connecting to the database. See the message below for a detailed description"
+
+                val original = (e as? ExposedSQLException)?.cause
+                when (original) {
+                    is SQLIntegrityConstraintViolationException ->
+                        println("SQL constraint violated")
+                    is BatchUpdateException ->
+                        println("SQL constraint violated")
+                    is PSQLException ->
+                        println("Test")
+                    else -> {
+                        message = e.message.toString()
+                    }
+                }
+            }
+
+
+            alert.title = "Database error"
+            alert.headerText = header
+            alert.contentText = message
+
+            val okButton = ButtonType("Exit", ButtonBar.ButtonData.APPLY)
+            alert.buttonTypes.setAll(okButton)
+
+            alert.showAndWait()
+
+            return false
+        }
+
         return true
     }
 
@@ -77,6 +134,8 @@ class DatabaseController : Controller() {
 
     fun add_sensors(sensors: ObservableList<String>) {
         transaction {
+            addLogger(StdOutSqlLogger)
+
             val existing_sensors = Sensors.selectAll().toList()
 
             sensors.forEach loop@{

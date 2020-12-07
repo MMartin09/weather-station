@@ -31,15 +31,14 @@ class MainController : Controller() {
         if (dbController.connect()) {
             println("Connected to the database!")
 
-            dbController.create_schema()
             if (sensors != null) dbController.add_sensors(sensorNames()!!)
 
-            dbController.test("Temperature Sensor")
+            //dbController.test("Temperature Sensor")
         } else {
             println("Could not connect to the database!")
 
             Platform.exit()
-            System.exit(1)
+            System.exit(0)
         }
     }
 
